@@ -42,3 +42,9 @@ html.dark {
     --grid-color: #1e1e1e;
     background-color: #0c0c0c;
 }
+
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+    transition: none !important;
+}
