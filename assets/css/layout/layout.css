@@ -25,6 +25,7 @@ header {
     padding: 16px 0;
     top: 0;
     z-index: 100;
+    overflow: hidden; /* 防止光效动画和流星导致滚动条溢出 */
 }
 
 header::before {
