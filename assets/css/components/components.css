@@ -279,3 +279,30 @@
     z-index: -1;
     overflow: hidden;
 }
+
+/* Dark Mode Header Star Effect */
+.star-effect {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transform-origin: center;
+    --star-rotation: 0deg;
+    --star-scale: 1;
+    animation: star-fade ease-in-out forwards;
+}
+
+@keyframes star-fade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(var(--star-rotation));
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(var(--star-scale)) rotate(calc(var(--star-rotation) + 45deg));
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(calc(var(--star-rotation) + 90deg));
+    }
+}

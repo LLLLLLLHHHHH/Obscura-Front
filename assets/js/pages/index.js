@@ -6,6 +6,7 @@ import { initDevModal } from '../core/modal.js';
 import { initDisclaimerModal } from '../core/disclaimer.js';
 import { GrassGenerator } from '../core/grass.js';
 import { getMeteorShower } from '../core/meteor.js';
+import { StarInteraction } from '../core/stars.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
@@ -17,6 +18,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 初始化草地系统（仅在 header 内，不改变原有布局）
     const headerEl = document.querySelector('header');
     if (headerEl) {
+        // 初始化暗黑主题点击星星特效
+        new StarInteraction(headerEl);
+
         // 创建 GrassGenerator 组件实例，使用默认配置
         const grass = new GrassGenerator(headerEl);
         // 初始生成（浅色主题下）
