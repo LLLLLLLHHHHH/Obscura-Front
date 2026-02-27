@@ -20,7 +20,7 @@ export class StarInteraction {
             // 星星大小范围 (像素)
             sizeRange: [10, 20],
             // 动画持续时间范围 (秒)
-            durationRange: [0.5, 1.5],
+            durationRange: [0.8, 2.5],
             // 颜色配置 (HSL)
             colors: {
                 hueRange: [40, 60],    // 金色/黄色系
