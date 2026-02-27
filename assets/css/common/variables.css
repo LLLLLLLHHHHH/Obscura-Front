@@ -36,6 +36,10 @@
     --border: #1e293b;
     --spotlight-color: 255, 255, 255;
 
+    /* ---- 暗黑主题重写强调色 (黑红配色) ---- */
+    /* 这种红色接近绯红/深红，避免刺眼的大红 (#FF0000) */
+    --obscura-accent: #e11d48; 
+
     /* ---- Neumorphism 卡片变量 (深色主题) ---- */
     --card-bg: #121212;
     --card-shadow-light: rgb(45, 45, 45);

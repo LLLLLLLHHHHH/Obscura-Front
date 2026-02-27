@@ -87,7 +87,8 @@ function updatePage() {
     if (langBtn) {
         const langText = langBtn.querySelector('.lang-text');
         if (langText) {
-            langText.textContent = currentLocale === 'zh' ? '中' : 'EN';
+            // 反转显示：当前是 zh 显示 EN，当前是 en 显示 中
+            langText.textContent = currentLocale === 'zh' ? 'EN' : '中';
         }
     }
 

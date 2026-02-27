@@ -17,6 +17,11 @@
     text-shadow: 0 0 10px rgba(0, 212, 170, 0.4);
 }
 
+/* 适配暗黑主题下的 Logo 阴影颜色 (改为红色光晕) */
+.dark .logo .accent {
+    text-shadow: 0 0 10px rgba(225, 29, 72, 0.4);
+}
+
 /* Buttons */
 .btn {
     display: inline-block;
@@ -160,7 +165,8 @@
 }
 
 .dark .tool-card .icon {
-    background: rgba(0, 212, 170, 0.2);
+    /* 暗黑主题下使用红色背景，透明度 0.2 */
+    background: rgba(225, 29, 72, 0.2);
 }
 
 .tool-card:hover .icon {
@@ -168,6 +174,11 @@
     background: var(--obscura-accent);
     color: white;
     box-shadow: 0 0 20px rgba(0, 212, 170, 0.4);
+}
+
+/* 暗黑主题下 Hover 时的阴影颜色 */
+.dark .tool-card:hover .icon {
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
 }
 
 .tool-card .icon svg {

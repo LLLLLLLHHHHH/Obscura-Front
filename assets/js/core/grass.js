@@ -50,6 +50,19 @@ export class GrassGenerator {
         // 主题状态：浅色显示，暗色隐藏
         this.isDark = document.documentElement.classList.contains('dark');
         this._ensureCanvas();
+
+        // 监听窗口大小变化（防抖）
+        this._resizeTimeout = null;
+        window.addEventListener('resize', () => {
+            if (this._resizeTimeout) clearTimeout(this._resizeTimeout);
+            this._resizeTimeout = setTimeout(() => {
+                // Resize 时，无论是否暗色，都强制更新 Canvas 尺寸
+                this._ensureCanvas();
+                if (!this.isDark) {
+                    this.generateGrass();
+                }
+            }, 200);
+        });
     }
 
     // 创建空叶片占位，供对象池使用
@@ -180,6 +193,12 @@ export class GrassGenerator {
 
     // 生成草地（一次性动画 -> 持久化）
     generateGrass() {
+        // 停止之前的动画循环，防止冲突
+        if (this._raf) {
+            cancelAnimationFrame(this._raf);
+            this._raf = null;
+        }
+
         this._ensureCanvas();
         if (this.isDark) {
             // 暗色主题下不生成
@@ -193,7 +212,15 @@ export class GrassGenerator {
         this._clearCanvas();
 
         const rect = this.headerEl.getBoundingClientRect();
-        const clusterCount = this._randInt(this.config.densityRange[0], this.config.densityRange[1]);
+        
+        // 基于宽度的自适应密度：以 1440px 为基准
+        // 如果窗口变窄，按比例减少簇数量，避免拥挤
+        const baseWidth = 1440;
+        const widthRatio = rect.width / baseWidth;
+        const minDensity = Math.max(5, Math.floor(this.config.densityRange[0] * widthRatio));
+        const maxDensity = Math.max(10, Math.floor(this.config.densityRange[1] * widthRatio));
+        
+        const clusterCount = this._randInt(minDensity, maxDensity);
 
         for (let c = 0; c < clusterCount; c++) {
             const scale = this._rand(this.config.scaleRange[0], this.config.scaleRange[1]);
