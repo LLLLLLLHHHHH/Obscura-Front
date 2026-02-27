@@ -3,6 +3,7 @@ import { initEffects } from '../core/effects.js';
 import { initSmoothScroll } from '../core/utils.js';
 import { initI18nModule } from '../i18n/index.js';
 import { initDevModal } from '../core/modal.js';
+import { initDisclaimerModal } from '../core/disclaimer.js';
 import { GrassGenerator } from '../core/grass.js';
 import { getMeteorShower } from '../core/meteor.js';
 
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initSmoothScroll();
     await initI18nModule();
     initDevModal();
+    initDisclaimerModal();
     // 初始化草地系统（仅在 header 内，不改变原有布局）
     const headerEl = document.querySelector('header');
     if (headerEl) {

@@ -140,6 +140,45 @@
         </div>
     </div>
 
+    <!-- Disclaimer Modal -->
+    <div class="disclaimer-modal-overlay" id="disclaimerModalOverlay">
+        <div class="disclaimer-modal" role="dialog" aria-modal="true" aria-labelledby="disclaimerModalTitle">
+            <div class="disclaimer-modal-header">
+                <div class="mac-controls">
+                    <span class="mac-control-red"></span>
+                    <span class="mac-control-yellow"></span>
+                    <span class="mac-control-green"></span>
+                </div>
+                <span class="disclaimer-modal-title" id="disclaimerModalTitle" data-i18n="disclaimer.title">免责声明</span>
+                <button class="disclaimer-modal-close-btn" id="disclaimerCloseX" aria-label="Close">X</button>
+            </div>
+            <div class="disclaimer-modal-body">
+                <p class="intro" data-i18n="disclaimer.intro"></p>
+                <h3 data-i18n="disclaimer.legalTitle"></h3>
+                <p data-i18n="disclaimer.legalContent"></p>
+                <h3 data-i18n="disclaimer.noWarrantyTitle"></h3>
+                <p data-i18n="disclaimer.noWarrantyContent"></p>
+                <h3 data-i18n="disclaimer.liabilityTitle"></h3>
+                <p data-i18n="disclaimer.liabilityContent"></p>
+                <h3 data-i18n="disclaimer.thirdPartyTitle"></h3>
+                <p data-i18n="disclaimer.thirdPartyContent"></p>
+                <h3 data-i18n="disclaimer.ipTitle"></h3>
+                <p data-i18n="disclaimer.ipContent"></p>
+                <h3 data-i18n="disclaimer.obligationTitle"></h3>
+                <p data-i18n="disclaimer.obligationContent"></p>
+                <h3 data-i18n="disclaimer.modifyTitle"></h3>
+                <p data-i18n="disclaimer.modifyContent"></p>
+                <h3 data-i18n="disclaimer.otherTitle"></h3>
+                <p data-i18n="disclaimer.otherContent"></p>
+                <p class="special-note" data-i18n="disclaimer.specialNote"></p>
+            </div>
+            <div class="disclaimer-modal-footer">
+                <button class="disclaimer-modal-btn disagree" id="disclaimerDisagree" data-i18n="disclaimer.disagree">不同意</button>
+                <button class="disclaimer-modal-btn agree" id="disclaimerAgree" data-i18n="disclaimer.agree">同意</button>
+            </div>
+        </div>
+    </div>
+
     <script type="module" crossorigin="anonymous" src="assets/js/pages/index.js"></script>
 </body>
 </html>
