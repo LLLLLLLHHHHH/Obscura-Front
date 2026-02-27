@@ -20,7 +20,7 @@ export class StarInteraction {
             // 星星大小范围 (像素)
             sizeRange: [10, 20],
             // 动画持续时间范围 (秒)
-            durationRange: [0.5, 2.5],
+            durationRange: [0.5, 1.5],
             // 颜色配置 (HSL)
             colors: {
                 hueRange: [40, 60],    // 金色/黄色系
@@ -29,8 +29,8 @@ export class StarInteraction {
             },
             // 光晕半径范围 (像素)
             glowRadiusRange: [5, 15],
-            // 五角星出现的概率 (0-1)，其余为四棱星
-            fivePointProbability: 0.5,
+            // 星星类型：'five-point', 'four-point', 'cross', 'dot', 'outline'
+            starTypes: ['five-point', 'four-point', 'cross', 'dot', 'outline'],
             ...config
         };
 
@@ -102,7 +102,7 @@ export class StarInteraction {
         const size = this._rand(this.config.sizeRange[0], this.config.sizeRange[1]);
         const rotation = this._rand(0, 360);
         const duration = this._rand(this.config.durationRange[0], this.config.durationRange[1]);
-        const isFivePoint = Math.random() < this.config.fivePointProbability;
+        const type = this.config.starTypes[Math.floor(this._rand(0, this.config.starTypes.length))];
         
         const hue = this._rand(this.config.colors.hueRange[0], this.config.colors.hueRange[1]);
         const sat = this._rand(this.config.colors.satRange[0], this.config.colors.satRange[1]);
@@ -131,11 +131,19 @@ export class StarInteraction {
         svg.style.overflow = "visible";
 
         const path = document.createElementNS(svgNS, "path");
-        path.setAttribute("d", this._getStarPath(isFivePoint ? 'five-point' : 'four-point'));
-        path.setAttribute("fill", color);
+        path.setAttribute("d", this._getStarPath(type));
         
-        // 使用 drop-shadow 实现发光
-        path.style.filter = `drop-shadow(0 0 ${glowRadius}px ${color})`;
+        if (type === 'outline') {
+            // 空心星样式：无填充，有描边
+            path.setAttribute("fill", "none");
+            path.setAttribute("stroke", color);
+            path.setAttribute("stroke-width", "8");
+            path.style.filter = `drop-shadow(0 0 ${glowRadius}px ${color})`;
+        } else {
+            // 实心星样式
+            path.setAttribute("fill", color);
+            path.style.filter = `drop-shadow(0 0 ${glowRadius}px ${color})`;
+        }
 
         svg.appendChild(path);
         star.appendChild(svg);
@@ -152,11 +160,25 @@ export class StarInteraction {
 
     // 获取 SVG 路径
     _getStarPath(type) {
-        if (type === 'five-point') {
-            return "M50 0 L61.8 35.3 L98.8 35.3 L68.8 57.1 L80.3 92.4 L50 70.6 L19.7 92.4 L31.2 57.1 L1.2 35.3 L38.2 35.3 Z";
-        } else {
-            // 四棱星
-            return "M50 0 C55 25 75 45 100 50 C75 55 55 75 50 100 C45 75 25 55 0 50 C25 45 45 25 50 0 Z";
+        switch (type) {
+            case 'five-point':
+                // 五角星
+                return "M50 0 L61.8 35.3 L98.8 35.3 L68.8 57.1 L80.3 92.4 L50 70.6 L19.7 92.4 L31.2 57.1 L1.2 35.3 L38.2 35.3 Z";
+            case 'four-point':
+                // 四棱星
+                return "M50 0 C55 25 75 45 100 50 C75 55 55 75 50 100 C45 75 25 55 0 50 C25 45 45 25 50 0 Z";
+            case 'cross':
+                // 十字星：细长的四角星
+                return "M50 0 L55 45 L100 50 L55 55 L50 100 L45 55 L0 50 L45 45 Z";
+            case 'dot':
+                // 极简点状星：圆形
+                return "M50 25 A25 25 0 1 1 50 75 A25 25 0 1 1 50 25 Z";
+            case 'outline':
+                // 空心星：复用五角星路径，但样式处理不同
+                return "M50 5 L61.8 40.3 L98.8 40.3 L68.8 62.1 L80.3 97.4 L50 75.6 L19.7 97.4 L31.2 62.1 L1.2 40.3 L38.2 40.3 Z";
+            default:
+                // 默认五角星
+                return "M50 0 L61.8 35.3 L98.8 35.3 L68.8 57.1 L80.3 92.4 L50 70.6 L19.7 92.4 L31.2 57.1 L1.2 35.3 L38.2 35.3 Z";
         }
     }
 
