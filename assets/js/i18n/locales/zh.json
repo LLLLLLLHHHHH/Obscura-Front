@@ -1,6 +1,6 @@
 {
     "site": {
-        "title": "Obscura - 免费在线开发者工具",
+        "title": "Obscura - 开发者工具",
         "copyright": "© 2026 Obscura. JJH"
     },
     "header": {
@@ -8,8 +8,8 @@
         "switchLang": "切换语言"
     },
     "tools": {
-        "placeholder1": "占位工具 1",
-        "placeholder1Desc": "这是一个预留的工具位置",
+        "environment": "环境",
+        "environmentDesc": "修改浏览器运行时环境，伪造浏览器指纹",
         "placeholder2": "占位工具 2",
         "placeholder2Desc": "这是一个预留的工具位置",
         "placeholder3": "占位工具 3",
@@ -24,6 +24,17 @@
         "placeholder7Desc": "这是一个预留的工具位置",
         "placeholder8": "占位工具 8",
         "placeholder8Desc": "这是一个预留的工具位置"
+    },
+    "env": {
+        "back": "返回",
+        "hooks": "对象钩子",
+        "hooksDesc": "拦截并修改对象属性的读取和写入操作",
+        "functions": "函数固定",
+        "functionsDesc": "固定函数返回值或修改函数行为",
+        "fingerprint": "指纹配置",
+        "fingerprintDesc": "伪造浏览器指纹信息",
+        "async": "异步拦截",
+        "asyncDesc": "拦截并修改异步操作的结果"
     },
     "modal": {
         "title": "提示",

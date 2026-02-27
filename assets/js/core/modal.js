@@ -41,7 +41,7 @@ export function initDevModal() {
   const placeholderTools = document.querySelectorAll('[data-i18n^="tools.placeholder"]');
   placeholderTools.forEach(tool => {
     const parentCard = tool.closest('.tool-card');
-    if (parentCard) {
+    if (parentCard && !parentCard.hasAttribute('data-tool')) {
       parentCard.addEventListener('click', (e) => {
         e.preventDefault();
         showModal();

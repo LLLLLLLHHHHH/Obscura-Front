@@ -54,6 +54,7 @@
 @media (max-width: 900px) {
     .tools-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 32px; /* 减小间距 */
     }
 }
 
@@ -64,6 +65,7 @@
     
     .tools-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 24px; /* 进一步减小间距 */
     }
 
     .features-grid {
@@ -72,5 +74,12 @@
 
     .cta-box {
         padding: 28px 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .tools-grid {
+        grid-template-columns: 1fr; /* 移动端单列 */
+        justify-items: center; /* 卡片居中 */
     }
 }

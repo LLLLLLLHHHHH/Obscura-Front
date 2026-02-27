@@ -1,6 +1,6 @@
 {
     "site": {
-        "title": "Obscura - Free Online Developer Tools",
+        "title": "Obscura - Developer Tools",
         "copyright": "© 2026 Obscura. JJH"
     },
     "header": {
@@ -8,8 +8,8 @@
         "switchLang": "Switch Language"
     },
     "tools": {
-        "placeholder1": "Placeholder 1",
-        "placeholder1Desc": "This is a reserved tool position",
+        "environment": "Environment",
+        "environmentDesc": "Modify browser runtime environment to fake browser fingerprints",
         "placeholder2": "Placeholder 2",
         "placeholder2Desc": "This is a reserved tool position",
         "placeholder3": "Placeholder 3",
@@ -24,6 +24,17 @@
         "placeholder7Desc": "This is a reserved tool position",
         "placeholder8": "Placeholder 8",
         "placeholder8Desc": "This is a reserved tool position"
+    },
+    "env": {
+        "back": "Back",
+        "hooks": "Object Hooks",
+        "hooksDesc": "Intercept and modify object property read/write operations",
+        "functions": "Function Fix",
+        "functionsDesc": "Fix function return values or modify function behavior",
+        "fingerprint": "Fingerprint Config",
+        "fingerprintDesc": "Fake browser fingerprint information",
+        "async": "Async Interception",
+        "asyncDesc": "Intercept and modify async operation results"
     },
     "modal": {
         "title": "Notice",

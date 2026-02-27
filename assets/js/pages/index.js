@@ -7,6 +7,7 @@ import { initDisclaimerModal } from '../core/disclaimer.js';
 import { GrassGenerator } from '../core/grass.js';
 import { getMeteorShower } from '../core/meteor.js';
 import { getStarInteraction } from '../core/stars.js';
+import { router } from '../core/router.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
@@ -15,6 +16,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     await initI18nModule();
     initDevModal();
     initDisclaimerModal();
+    
+    // 初始化工具卡片点击事件
+    initToolCards();
+
     // 初始化草地系统（仅在 header 内，不改变原有布局）
     const headerEl = document.querySelector('header');
     if (headerEl) {
@@ -56,3 +61,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.ObscuraMeteor = meteor;
     }
 });
+
+function initToolCards() {
+    const toolCards = document.querySelectorAll('.tool-card[data-tool]');
+    toolCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+            const tool = card.getAttribute('data-tool');
+            router.navigate(tool);
+        });
+    });
+}

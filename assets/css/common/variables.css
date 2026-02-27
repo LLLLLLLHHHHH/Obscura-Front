@@ -45,3 +45,10 @@
     --card-shadow-light: rgb(45, 45, 45);
     --card-shadow-dark: rgb(10, 10, 10);
 }
+
+@media (max-width: 500px) {
+    :root {
+        --card-width: 280px; /* 移动端加宽卡片 */
+        --card-height: 320px; /* 相应加高 */
+    }
+}
