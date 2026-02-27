@@ -1,0 +1,182 @@
+/* Dev Modal Component */
+
+.dev-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.dev-modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- Light Theme: Windows 9x Style --- */
+.dev-modal {
+  width: 320px;
+  background: #EAEAEA; /* Adjusted from #c0c0c0 */
+  border: 2px outset #EAEAEA; /* Adjusted from #c0c0c0 */
+  padding: 2px;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 12px;
+  color: #000;
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+
+.dev-modal-overlay.visible .dev-modal {
+    transform: scale(1);
+}
+
+.dev-modal-header {
+  background: #000080;
+  color: #fff;
+  padding: 3px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.dev-modal-close-btn {
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  width: 18px;
+  height: 18px;
+  font-family: "monospace";
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dev-modal-close-btn:active {
+  border-style: inset;
+}
+
+.dev-modal-body {
+  padding: 20px 15px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.dev-modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.dev-modal-ok-btn {
+  background: #c0c0c0;
+  border: 2px outset #c0c0c0;
+  padding: 5px 20px;
+  cursor: pointer;
+  min-width: 80px;
+}
+
+.dev-modal-ok-btn:active {
+  border-style: inset;
+}
+
+.dev-modal .mac-controls {
+    display: none;
+}
+
+/* --- Dark Theme: macOS Style --- */
+.dark .dev-modal {
+  width: 320px;
+  padding: 0;
+  border: 1px solid #333; /* Adjusted from #3a3a3a */
+  border-radius: 10px;
+  background-color: #181818; /* Adjusted from #1e1e1e */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Increased shadow */
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #e6e6ef;
+}
+
+.dark .dev-modal-header {
+  background: #333;
+  padding: 8px 12px;
+  border-bottom: 1px solid #3a3a3a;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.dark .mac-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark .mac-controls span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dark .mac-controls .mac-control-red { background-color: #ff5f57; }
+.dark .mac-controls .mac-control-yellow { background-color: #ffbd2e; }
+
+
+.dark .dev-modal-title,
+.dark .dev-modal-close-btn {
+  display: none;
+}
+
+.dark .dev-modal-body {
+  font-size: 14px;
+  padding: 25px 20px;
+}
+
+.dark .dev-modal-footer {
+    background: #252525;
+    padding: 12px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 1px solid #3a3a3a;
+}
+
+.dark .dev-modal-ok-btn {
+  background: #4a4a4a;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: 6px 18px;
+  font-size: 13px;
+}
+
+.dark .dev-modal-ok-btn:hover {
+    background: #5a5a5a;
+}
+
+.dark .dev-modal-ok-btn:active {
+    background: #404040;
+    border-style: solid;
+}
+
+/* Minimize Animation */
+.dev-modal.minimizing {
+  animation: minimize-animation 0.3s ease-out forwards;
+}
+
+@keyframes minimize-animation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+}

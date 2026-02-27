@@ -1,0 +1,270 @@
+/* Logo */
+.logo.hero-title {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.2em;
+    perspective: 1000px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    user-select: none;
+}
+
+.logo .accent {
+    color: var(--obscura-accent);
+    text-shadow: 0 0 10px rgba(0, 212, 170, 0.4);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: var(--primary-hover);
+}
+
+.lang-btn {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.lang-btn:hover {
+    background: var(--border);
+}
+
+.lang-btn .lang-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.theme-btn {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.theme-btn:hover {
+    background: var(--border);
+}
+
+.theme-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.sun-icon {
+    color: #fbbf24;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    fill: none;
+    filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.6));
+}
+
+.moon-icon {
+    color: #0f172a;
+    fill: currentColor;
+    stroke: none;
+    filter: drop-shadow(0 0 2px rgba(15, 23, 42, 0.5));
+    transform-origin: center center;
+}
+
+/* Tool Cards */
+.tool-card {
+    position: relative;
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    box-shadow: 15px 15px 30px var(--card-shadow-dark),
+                -15px -15px 30px var(--card-shadow-light);
+    border: none;
+    padding: 24px 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(var(--spotlight-color), 0.06), 
+        transparent 40%
+    );
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.tool-card:hover::before {
+    opacity: 1;
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 20px 20px 40px var(--card-shadow-dark),
+                -20px -20px 40px var(--card-shadow-light);
+}
+
+.tool-card .icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    color: var(--obscura-accent);
+    background: rgba(0, 212, 170, 0.1);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.dark .tool-card .icon {
+    background: rgba(0, 212, 170, 0.2);
+}
+
+.tool-card:hover .icon {
+    transform: scale(1.1) rotate(3deg);
+    background: var(--obscura-accent);
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.4);
+}
+
+.tool-card .icon svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    stroke: currentColor;
+    fill: none;
+    transition: all 0.3s ease;
+}
+
+.tool-card .name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+    color: var(--text);
+}
+
+.tool-card .desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.feature-card .icon {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.feature-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* CTA Box */
+.cta-box {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-radius: 12px;
+    padding: 40px;
+    color: white;
+}
+
+.cta-box h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.cta-box p {
+    font-size: 15px;
+    opacity: 0.95;
+    margin-bottom: 20px;
+}
+
+.cta-box .btn {
+    background: white;
+    color: #16a34a;
+}
+
+/* Header 草地画布：绝对定位在 header 内部，置于内容下方且不影响交互 */
+.grass-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Header 流星容器：暗黑主题下显示 */
+.meteor-shower {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}

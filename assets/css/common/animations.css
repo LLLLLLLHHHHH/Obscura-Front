@@ -1,0 +1,37 @@
+.hero-word {
+    display: inline-block;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+}
+
+.hero-word-hello {
+    transform: translate(calc(var(--hero-mouse-x) * 5px),
+            calc(var(--hero-mouse-y) * 5px));
+}
+
+.hero-word-obscura {
+    transform: translate(calc(var(--hero-mouse-x) * -4px),
+            calc(var(--hero-mouse-y) * -4px));
+}
+
+.theme-btn:hover .sun-icon {
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes swing {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(15deg); }
+    40% { transform: rotate(-10deg); }
+    60% { transform: rotate(5deg); }
+    80% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.theme-btn:hover .moon-icon {
+    animation: swing 2s ease-in-out infinite;
+}

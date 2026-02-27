@@ -1,0 +1,33 @@
+{
+    "site": {
+        "title": "Obscura - Free Online Developer Tools",
+        "copyright": "© 2026 Obscura. JJH"
+    },
+    "header": {
+        "switchTheme": "Switch Theme",
+        "switchLang": "Switch Language"
+    },
+    "tools": {
+        "placeholder1": "Placeholder 1",
+        "placeholder1Desc": "This is a reserved tool position",
+        "placeholder2": "Placeholder 2",
+        "placeholder2Desc": "This is a reserved tool position",
+        "placeholder3": "Placeholder 3",
+        "placeholder3Desc": "This is a reserved tool position",
+        "placeholder4": "Placeholder 4",
+        "placeholder4Desc": "This is a reserved tool position",
+        "placeholder5": "Placeholder 5",
+        "placeholder5Desc": "This is a reserved tool position",
+        "placeholder6": "Placeholder 6",
+        "placeholder6Desc": "This is a reserved tool position",
+        "placeholder7": "Placeholder 7",
+        "placeholder7Desc": "This is a reserved tool position",
+        "placeholder8": "Placeholder 8",
+        "placeholder8Desc": "This is a reserved tool position"
+    },
+    "modal": {
+        "title": "Notice",
+        "body": "This feature is under development, please stay tuned!",
+        "ok": "OK"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "site": {
+        "title": "Obscura - 免费在线开发者工具",
+        "copyright": "© 2026 Obscura. JJH"
+    },
+    "header": {
+        "switchTheme": "切换主题",
+        "switchLang": "切换语言"
+    },
+    "tools": {
+        "placeholder1": "占位工具 1",
+        "placeholder1Desc": "这是一个预留的工具位置",
+        "placeholder2": "占位工具 2",
+        "placeholder2Desc": "这是一个预留的工具位置",
+        "placeholder3": "占位工具 3",
+        "placeholder3Desc": "这是一个预留的工具位置",
+        "placeholder4": "占位工具 4",
+        "placeholder4Desc": "这是一个预留的工具位置",
+        "placeholder5": "占位工具 5",
+        "placeholder5Desc": "这是一个预留的工具位置",
+        "placeholder6": "占位工具 6",
+        "placeholder6Desc": "这是一个预留的工具位置",
+        "placeholder7": "占位工具 7",
+        "placeholder7Desc": "这是一个预留的工具位置",
+        "placeholder8": "占位工具 8",
+        "placeholder8Desc": "这是一个预留的工具位置"
+    },
+    "modal": {
+        "title": "提示",
+        "body": "此功能正在开发中，敬请期待！",
+        "ok": "确定"
+    }
+}

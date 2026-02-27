@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="site.title">Obscura - 免费在线开发者工具</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+    <header>
+
+        <div class="container">
+            <a href="/" class="logo hero-title">
+                <span class="hero-word hero-word-hello">Hello</span>
+                <span class="hero-word hero-word-obscura accent">Obscura</span>
+            </a>
+            <div class="header-actions">
+                <button class="lang-btn" id="langBtn" title="切换语言">
+                    <span class="lang-text">中</span>
+                </button>
+                <button class="theme-btn" id="themeBtn" title="切换主题">
+                    <svg class="sun-icon" viewBox="0 0 24 24" style="display: none;">
+                        <circle cx="12" cy="12" r="6" fill="currentColor" stroke="none"></circle>
+                        <line x1="12" y1="2" x2="12" y2="4"></line>
+                        <line x1="12" y1="20" x2="12" y2="22"></line>
+                        <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+                        <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+                        <line x1="2" y1="12" x2="4" y2="12"></line>
+                        <line x1="20" y1="12" x2="22" y2="12"></line>
+                        <line x1="6.34" y1="17.66" x2="4.93" y2="19.07"></line>
+                        <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        <polygon points="18.5 2.5 19.5 5.5 22.5 6.5 19.5 7.5 18.5 10.5 17.5 7.5 14.5 6.5 17.5 5.5"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="tools" id="tools">
+        <div class="container">
+            <div class="tools-grid">
+                <!-- 图标1：魔方 (Cube) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder1">占位工具 1</div>
+                    <div class="desc" data-i18n="tools.placeholder1Desc">这是一个预留的工具位置</div>
+                </div>
+                <!-- 图标2：幽灵 (Ghost) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 22l3-3 3 3 3-3 3 3V10a9 9 0 0 0-18 0v12l3-3 3 3z"></path><path d="M10 10a2 2 0 1 1-4 0"></path><path d="M18 10a2 2 0 1 1-4 0"></path></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder2">占位工具 2</div>
+                    <div class="desc" data-i18n="tools.placeholder2Desc">这是一个预留的工具位置</div>
+                </div>
+                <!-- 图标3：图层 (Layers) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder3">占位工具 3</div>
+                    <div class="desc" data-i18n="tools.placeholder3Desc">这是一个预留的工具位置</div>
+                </div>
+                <!-- 图标4：终端 (Terminal) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder4">占位工具 4</div>
+                    <div class="desc" data-i18n="tools.placeholder4Desc">这是一个预留的工具位置</div>
+                </div>
+                <!-- 图标1：魔方 (Cube) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder5">占位工具 5</div>
+                    <div class="desc" data-i18n="tools.placeholder5Desc">这是一个预留的工具位置</div>
+                </div>
+                <!-- 图标2：幽灵 (Ghost) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 22l3-3 3 3 3-3 3 3V10a9 9 0 0 0-18 0v12l3-3 3 3z"></path><path d="M10 10a2 2 0 1 1-4 0"></path><path d="M18 10a2 2 0 1 1-4 0"></path></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder6">占位工具 6</div>
+                    <div class="desc" data-i18n="tools.placeholder6Desc">这是一个预留的工具位置</div>
+                </div>
+                <!-- 图标3：图层 (Layers) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder7">占位工具 7</div>
+                    <div class="desc" data-i18n="tools.placeholder7Desc">这是一个预留的工具位置</div>
+                </div>
+                <!-- 图标1：魔方 (Cube) -->
+                <div class="tool-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                    </div>
+                    <div class="name" data-i18n="tools.placeholder8">占位工具 8</div>
+                    <div class="desc" data-i18n="tools.placeholder8Desc">这是一个预留的工具位置</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <p data-i18n="site.copyright">© 2026 Obscura. JJH</p>
+        </div>
+    </footer>
+
+    <!-- Dev Tool Modal -->
+    <div class="dev-modal-overlay" id="devModalOverlay">
+        <div class="dev-modal" role="dialog" aria-modal="true" aria-labelledby="devModalTitle">
+            <div class="dev-modal-header">
+                <div class="mac-controls">
+              <span class="mac-control-red"></span>
+              <span class="mac-control-yellow"></span>
+            </div>
+                <span class="dev-modal-title" id="devModalTitle" data-i18n="modal.title">提示</span>
+                <button class="dev-modal-close-btn dev-modal-close" aria-label="Close">X</button>
+            </div>
+            <div class="dev-modal-body" data-i18n="modal.body">
+                此功能正在开发中，敬请期待！
+            </div>
+            <div class="dev-modal-footer">
+                <button class="dev-modal-ok-btn dev-modal-close" data-i18n="modal.ok">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" crossorigin="anonymous" src="assets/js/pages/index.js"></script>
+</body>
+</html>
