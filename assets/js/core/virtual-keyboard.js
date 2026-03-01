@@ -79,13 +79,13 @@ const OS_LAYOUTS = {
                 { key: 'shift', code: 'ShiftRight', class: 'vk-shift-key', width: 'vk-u-2-75' }
             ],
             [
-                { key: 'fn', code: 'Fn', class: 'vk-fn-key vk-function-key', width: 'vk-u-1-25' },
-                { key: 'control', code: 'ControlLeft', class: 'vk-ctrl-key', width: 'vk-u-1' },
-                { key: 'option', code: 'AltLeft', class: 'vk-alt-key', width: 'vk-u-1' },
+                { key: 'fn', code: 'Fn', class: 'vk-fn-key', width: 'vk-u-1' },
+                { key: 'control', code: 'ControlLeft', class: 'vk-ctrl-key', width: 'vk-u-1-25' },
+                { key: 'option', code: 'AltLeft', class: 'vk-alt-key', width: 'vk-u-1-25' },
                 { key: 'command', code: 'MetaLeft', class: 'vk-command-key', width: 'vk-u-1-5' },
-                { key: '', code: 'Space', class: 'vk-space-key', width: 'vk-u-5' },
-                { key: 'option', code: 'AltRight', class: 'vk-alt-key', width: 'vk-u-1-5' },
-                { key: 'command', code: 'MetaRight', class: 'vk-command-key', width: 'vk-u-1' }
+                { key: '', code: 'Space', class: 'vk-space-key', width: 'vk-u-6' },
+                { key: 'command', code: 'MetaRight', class: 'vk-command-key', width: 'vk-u-1-5' },
+                { key: 'option', code: 'AltRight', class: 'vk-alt-key', width: 'vk-u-1-25' }
             ]
         ],
         modifierKeys: ['ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight', 'CapsLock', 'Fn'],
