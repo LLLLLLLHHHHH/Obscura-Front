@@ -1,0 +1,157 @@
+.virtual-keyboard {
+  position: fixed;
+  z-index: 2147483647;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.vk-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  padding-bottom: 14px;
+  border-radius: 12px;
+  background-color: #d3d3d3;
+  background-image: linear-gradient(to bottom, #d3d3d3, #c5c5c5);
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  width: 490px;
+}
+
+.vk-row {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+}
+
+.vk-key {
+  background-color: #f0f0f0;
+  border: 1px solid #0003;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 1px 2px,
+    rgba(0, 0, 0, 0.3) 0px 4px 8px -2px,
+    rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  text-align: center;
+  padding: 5px 3px;
+  font-size: 10px;
+  color: #333;
+  cursor: pointer;
+  transition: box-shadow 0.15s, background-color 0.15s, transform 0.08s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  min-height: 24px;
+}
+
+.vk-key:hover {
+  background-color: #e8e8e8;
+  transform: translateY(-1px);
+}
+
+.vk-key:active,
+.vk-key.pressed {
+  transform: translateY(1px);
+  box-shadow: none;
+  background-color: #ccc;
+}
+
+.vk-u-1 { flex-grow: 1; }
+.vk-u-1-25 { flex-grow: 1.25; }
+.vk-u-1-5 { flex-grow: 1.5; }
+.vk-u-1-75 { flex-grow: 1.75; }
+.vk-u-2 { flex-grow: 2; }
+.vk-u-2-25 { flex-grow: 2.25; }
+.vk-u-2-75 { flex-grow: 2.75; }
+.vk-u-5 { flex-grow: 5; }
+.vk-u-6 { flex-grow: 6; }
+.vk-u-6-25 { flex-grow: 6.25; }
+.vk-u-7-25 { flex-grow: 7.25; }
+
+.vk-function-key {
+  max-height: 18px;
+  padding: 3px;
+  font-size: 8px;
+}
+
+.vk-eject-key {
+  font-size: 10px;
+}
+
+.vk-delete-key,
+.vk-tab-key,
+.vk-backslash-key,
+.vk-caps-lock-key,
+.vk-return-key,
+.vk-shift-key,
+.vk-space-key,
+.vk-command-key,
+.vk-alt-key,
+.vk-ctrl-key,
+.vk-fn-key {
+  text-align: left;
+  padding-left: 6px;
+  justify-content: flex-start;
+}
+
+.vk-caps-lock-key {
+  font-size: 8px;
+  padding-left: 4px;
+}
+
+.vk-shift-key {
+  font-size: 9px;
+}
+
+.vk-command-key {
+  font-size: 10px;
+}
+
+.vk-command-key,
+.vk-alt-key,
+.vk-ctrl-key {
+  font-weight: 500;
+}
+
+.dark .vk-container {
+  background-color: #2d2d2d;
+  background-image: linear-gradient(to bottom, #2d2d2d, #252525);
+  box-shadow:
+    rgba(0, 0, 0, 0.5) 0px 2px 4px,
+    rgba(0, 0, 0, 0.4) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.3) 0px -3px 0px inset;
+}
+
+.dark .vk-key {
+  background-color: #3d3d3d;
+  border-color: #555;
+  color: #e0e0e0;
+  box-shadow:
+    rgba(0, 0, 0, 0.5) 0px 2px 4px,
+    rgba(0, 0, 0, 0.4) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.3) 0px -1px 0px inset;
+}
+
+.dark .vk-key:hover {
+  background-color: #4d4d4d;
+}
+
+.dark .vk-key:active,
+.dark .vk-key.pressed {
+  background-color: #252525;
+}
+
+.dark .vk-title,
+.dark .vk-btn {
+  color: #999;
+}
+
+.dark .vk-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

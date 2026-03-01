@@ -1,0 +1,85 @@
+.virtual-keyboard.win {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.virtual-keyboard.win .vk-container {
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.virtual-keyboard.win .vk-key {
+  border: 1px solid #999;
+  border-radius: 2px;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 1px 2px,
+    rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  transition: box-shadow 0.1s, background-color 0.1s, transform 0.05s;
+  font-size: 10px;
+  min-height: 24px;
+  padding: 5px 3px;
+}
+
+.virtual-keyboard.win .vk-key:hover {
+  background-color: #e0e8e8;
+}
+
+.virtual-keyboard.win .vk-key:active,
+.virtual-keyboard.win .vk-key.pressed {
+  transform: translateY(1px);
+  box-shadow: none;
+  background-color: #ccc;
+}
+
+.virtual-keyboard.win .vk-function-key {
+  max-height: 18px;
+  padding: 3px;
+  font-size: 8px;
+}
+
+.virtual-keyboard.win .vk-print-key {
+  font-size: 8px;
+}
+
+.virtual-keyboard.win .vk-win-key {
+  font-size: 10px;
+}
+
+.virtual-keyboard.win .vk-caps-lock-key {
+  font-size: 8px;
+  padding-left: 4px;
+}
+
+.virtual-keyboard.win .vk-shift-key,
+.virtual-keyboard.win .vk-tab-key,
+.virtual-keyboard.win .vk-backspace-key {
+  font-size: 9px;
+}
+
+.virtual-keyboard.win .vk-ctrl-key,
+.virtual-keyboard.win .vk-alt-key,
+.virtual-keyboard.win .vk-win-key,
+.virtual-keyboard.win .vk-menu-key {
+  font-weight: bold;
+  font-size: 9px;
+}
+
+.dark.virtual-keyboard.win .vk-key {
+  background-color: #3d3d3d;
+  border-color: #555;
+  color: #e0e0e0;
+  box-shadow:
+    rgba(0, 0, 0, 0.5) 0px 1px 2px,
+    rgba(0, 0, 0, 0.3) 0px -1px 0px inset;
+}
+
+.dark.virtual-keyboard.win .vk-key:hover {
+  background-color: #4d4d4d;
+}
+
+.dark.virtual-keyboard.win .vk-key:active,
+.dark.virtual-keyboard.win .vk-key.pressed {
+  background-color: #252525;
+}

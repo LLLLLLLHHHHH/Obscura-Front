@@ -83,6 +83,30 @@
     transition: transform 0.3s ease;
 }
 
+.vk-btn {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    color: var(--text);
+}
+
+.vk-btn:hover {
+    background: var(--border);
+}
+
+.vk-btn.active {
+    background: var(--obscura-accent);
+    border-color: var(--obscura-accent);
+    color: white;
+}
+
 .sun-icon {
     color: #fbbf24;
     stroke: currentColor;

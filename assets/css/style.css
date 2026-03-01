@@ -4,6 +4,8 @@
 @import 'layout/layout.css';
 @import 'components/components.css';
 @import 'components/modal.css';
+@import 'components/virtual-keyboard-mac.css';
+@import 'components/virtual-keyboard-win.css';
 
 @import 'pages/index.css';
 @import 'pages/environment.css';

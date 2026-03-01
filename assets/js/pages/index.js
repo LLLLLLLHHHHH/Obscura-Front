@@ -8,6 +8,9 @@ import { GrassGenerator } from '../core/grass.js';
 import { getMeteorShower } from '../core/meteor.js';
 import { getStarInteraction } from '../core/stars.js';
 import { router } from '../core/router.js';
+import VirtualKeyboard from '../core/virtual-keyboard.js';
+
+let virtualKeyboard = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
@@ -17,7 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initDevModal();
     initDisclaimerModal();
     
-    // 初始化工具卡片点击事件
+    initVirtualKeyboard();
+    
     initToolCards();
 
     // 初始化草地系统（仅在 header 内，不改变原有布局）
@@ -71,4 +75,27 @@ function initToolCards() {
             router.navigate(tool);
         });
     });
+}
+
+function initVirtualKeyboard() {
+    const vkBtn = document.getElementById('vkBtn');
+    if (!vkBtn) return;
+
+    virtualKeyboard = new VirtualKeyboard({
+        visible: false,
+        defaultPosition: { x: -20, y: -20 },
+        onInput: (data) => {
+            console.log('Virtual keyboard input:', data);
+        },
+        onKeyPress: (data) => {
+            console.log('Virtual keyboard key press:', data);
+        }
+    });
+
+    vkBtn.addEventListener('click', () => {
+        virtualKeyboard.toggle();
+        vkBtn.classList.toggle('active', virtualKeyboard.keyboardEl.style.display !== 'none');
+    });
+
+    window.virtualKeyboard = virtualKeyboard;
 }
