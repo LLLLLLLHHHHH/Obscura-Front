@@ -90,7 +90,7 @@ class Router {
         if (!container) return;
 
         if (hash.startsWith(ROUTES.ENVIRONMENT)) {
-            const { EnvironmentTool } = await import('./environment.js');
+            const { EnvironmentTool } = await import('../pages/environment.js');
             if (!window.environmentTool) {
                 window.environmentTool = new EnvironmentTool(container);
                 window.environmentTool.init();
@@ -105,7 +105,7 @@ class Router {
                 window.environmentTool.navigate('async');
             }
         } else if (hash.startsWith(ROUTES.ANTIDEBUG)) {
-            const { AntiDebugTool } = await import('./antidebug.js');
+            const { AntiDebugTool } = await import('../pages/antidebug.js');
             if (!window.antidebugTool) {
                 window.antidebugTool = new AntiDebugTool(container);
                 window.antidebugTool.init();
@@ -116,7 +116,7 @@ class Router {
                 window.antidebugTool.navigate('console');
             }
         } else if (hash.startsWith(ROUTES.DEVTOOLS)) {
-            const { DevTools } = await import('./devtools.js');
+            const { DevTools } = await import('../pages/devtools.js');
             if (!window.devTools) {
                 window.devTools = new DevTools(container);
                 window.devTools.init();
