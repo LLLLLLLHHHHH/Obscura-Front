@@ -10,6 +10,8 @@
     "tools": {
         "environment": "环境",
         "environmentDesc": "修改浏览器运行时环境，伪造浏览器指纹",
+        "antidebug": "反调试",
+        "antidebugDesc": "检测并阻止调试行为",
         "placeholder2": "占位工具 2",
         "placeholder2Desc": "这是一个预留的工具位置",
         "placeholder3": "占位工具 3",
@@ -35,6 +37,12 @@
         "fingerprintDesc": "伪造浏览器指纹信息",
         "async": "异步拦截",
         "asyncDesc": "拦截并修改异步操作的结果"
+    },
+    "ad": {
+        "debugger": "Debugger",
+        "debuggerDesc": "检测并阻止调试器行为",
+        "console": "Console",
+        "consoleDesc": "检测控制台打开状态"
     },
     "modal": {
         "title": "提示",

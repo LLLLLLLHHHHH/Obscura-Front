@@ -10,6 +10,8 @@
     "tools": {
         "environment": "Environment",
         "environmentDesc": "Modify browser runtime environment to fake browser fingerprints",
+        "antidebug": "Anti-Debug",
+        "antidebugDesc": "Detect and prevent debugging",
         "placeholder2": "Placeholder 2",
         "placeholder2Desc": "This is a reserved tool position",
         "placeholder3": "Placeholder 3",
@@ -35,6 +37,12 @@
         "fingerprintDesc": "Fake browser fingerprint information",
         "async": "Async Interception",
         "asyncDesc": "Intercept and modify async operation results"
+    },
+    "ad": {
+        "debugger": "Debugger",
+        "debuggerDesc": "Detect and prevent debugger activity",
+        "console": "Console",
+        "consoleDesc": "Detect console open status"
     },
     "modal": {
         "title": "Notice",

@@ -4,7 +4,10 @@ export const ROUTES = {
     ENVIRONMENT_HOOKS: 'environment/hooks',
     ENVIRONMENT_FUNCTIONS: 'environment/functions',
     ENVIRONMENT_FINGERPRINT: 'environment/fingerprint',
-    ENVIRONMENT_ASYNC: 'environment/async'
+    ENVIRONMENT_ASYNC: 'environment/async',
+    ANTIDEBUG: 'antidebug',
+    ANTIDEBUG_DEBUGGER: 'antidebug/debugger',
+    ANTIDEBUG_CONSOLE: 'antidebug/console'
 };
 
 class Router {
@@ -35,6 +38,8 @@ class Router {
 
         if (hash.startsWith(ROUTES.ENVIRONMENT)) {
             this.loadToolPage(main, hash);
+        } else if (hash.startsWith(ROUTES.ANTIDEBUG)) {
+            this.loadToolPage(main, hash);
         } else {
             this.loadHomePage(main);
         }
@@ -57,6 +62,10 @@ class Router {
             window.environmentTool.destroy();
             window.environmentTool = null;
         }
+        if (window.antidebugTool) {
+            window.antidebugTool.destroy();
+            window.antidebugTool = null;
+        }
 
         const toolContainer = document.getElementById('tool-container');
         if (toolContainer) {
@@ -72,21 +81,32 @@ class Router {
         const container = document.getElementById('tool-content');
         if (!container) return;
 
-        const { EnvironmentTool } = await import('./environment.js');
-        
-        if (!window.environmentTool) {
-            window.environmentTool = new EnvironmentTool(container);
-            window.environmentTool.init();
-        }
-
-        if (hash === ROUTES.ENVIRONMENT || hash === ROUTES.ENVIRONMENT_HOOKS) {
-            window.environmentTool.navigate('hooks');
-        } else if (hash === ROUTES.ENVIRONMENT_FUNCTIONS) {
-            window.environmentTool.navigate('functions');
-        } else if (hash === ROUTES.ENVIRONMENT_FINGERPRINT) {
-            window.environmentTool.navigate('fingerprint');
-        } else if (hash === ROUTES.ENVIRONMENT_ASYNC) {
-            window.environmentTool.navigate('async');
+        if (hash.startsWith(ROUTES.ENVIRONMENT)) {
+            const { EnvironmentTool } = await import('./environment.js');
+            if (!window.environmentTool) {
+                window.environmentTool = new EnvironmentTool(container);
+                window.environmentTool.init();
+            }
+            if (hash === ROUTES.ENVIRONMENT || hash === ROUTES.ENVIRONMENT_HOOKS) {
+                window.environmentTool.navigate('hooks');
+            } else if (hash === ROUTES.ENVIRONMENT_FUNCTIONS) {
+                window.environmentTool.navigate('functions');
+            } else if (hash === ROUTES.ENVIRONMENT_FINGERPRINT) {
+                window.environmentTool.navigate('fingerprint');
+            } else if (hash === ROUTES.ENVIRONMENT_ASYNC) {
+                window.environmentTool.navigate('async');
+            }
+        } else if (hash.startsWith(ROUTES.ANTIDEBUG)) {
+            const { AntiDebugTool } = await import('./antidebug.js');
+            if (!window.antidebugTool) {
+                window.antidebugTool = new AntiDebugTool(container);
+                window.antidebugTool.init();
+            }
+            if (hash === ROUTES.ANTIDEBUG || hash === ROUTES.ANTIDEBUG_DEBUGGER) {
+                window.antidebugTool.navigate('debugger');
+            } else if (hash === ROUTES.ANTIDEBUG_CONSOLE) {
+                window.antidebugTool.navigate('console');
+            }
         }
     }
 }
