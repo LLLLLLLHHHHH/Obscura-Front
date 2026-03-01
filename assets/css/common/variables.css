@@ -42,8 +42,8 @@
 
     /* ---- Neumorphism 卡片变量 (深色主题) ---- */
     --card-bg: #121212;
-    --card-shadow-light: rgb(45, 45, 45);
-    --card-shadow-dark: rgb(10, 10, 10);
+    --card-shadow-light: rgba(255, 255, 255, 0.05);
+    --card-shadow-dark: rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 500px) {
