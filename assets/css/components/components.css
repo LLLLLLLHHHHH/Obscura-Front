@@ -107,6 +107,12 @@
     color: white;
 }
 
+@media (max-width: 768px) {
+    .vk-btn {
+        display: none;
+    }
+}
+
 .sun-icon {
     color: #fbbf24;
     stroke: currentColor;

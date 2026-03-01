@@ -81,6 +81,11 @@ function initVirtualKeyboard() {
     const vkBtn = document.getElementById('vkBtn');
     if (!vkBtn) return;
 
+    if (window.innerWidth <= 768) {
+        vkBtn.style.display = 'none';
+        return;
+    }
+
     virtualKeyboard = new VirtualKeyboard({
         visible: false,
         defaultPosition: { x: -20, y: -20 },
@@ -95,6 +100,17 @@ function initVirtualKeyboard() {
     vkBtn.addEventListener('click', () => {
         virtualKeyboard.toggle();
         vkBtn.classList.toggle('active', virtualKeyboard.keyboardEl.style.display !== 'none');
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            vkBtn.style.display = 'none';
+            if (virtualKeyboard) {
+                virtualKeyboard.hide();
+            }
+        } else {
+            vkBtn.style.display = 'flex';
+        }
     });
 
     window.virtualKeyboard = virtualKeyboard;

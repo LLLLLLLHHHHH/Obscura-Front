@@ -33,6 +33,13 @@
   background-color: #ccc;
 }
 
+.virtual-keyboard.win .vk-key.pressed {
+  color: var(--obscura-accent);
+  text-shadow: 
+      0 0 10px var(--obscura-accent),
+      0 0 20px var(--obscura-accent);
+}
+
 .virtual-keyboard.win .vk-function-key {
   max-height: 18px;
   padding: 3px;
@@ -82,4 +89,11 @@
 .dark.virtual-keyboard.win .vk-key:active,
 .dark.virtual-keyboard.win .vk-key.pressed {
   background-color: #252525;
+}
+
+.dark.virtual-keyboard.win .vk-key.pressed {
+  color: var(--obscura-accent);
+  text-shadow: 
+      0 0 10px var(--obscura-accent),
+      0 0 20px var(--obscura-accent);
 }

@@ -62,6 +62,13 @@
   background-color: #ccc;
 }
 
+.vk-key.pressed {
+  color: var(--obscura-accent);
+  text-shadow: 
+      0 0 10px var(--obscura-accent),
+      0 0 20px var(--obscura-accent);
+}
+
 .vk-u-1 { flex-grow: 1; }
 .vk-u-1-25 { flex-grow: 1.25; }
 .vk-u-1-5 { flex-grow: 1.5; }
@@ -145,6 +152,13 @@
 .dark .vk-key:active,
 .dark .vk-key.pressed {
   background-color: #252525;
+}
+
+.dark .vk-key.pressed {
+  color: var(--obscura-accent);
+  text-shadow: 
+      0 0 10px var(--obscura-accent),
+      0 0 20px var(--obscura-accent);
 }
 
 .dark .vk-title,

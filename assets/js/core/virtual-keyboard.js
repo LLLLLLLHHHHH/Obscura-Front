@@ -222,16 +222,7 @@ class VirtualKeyboard {
     }
 
     loadPosition() {
-        const saved = localStorage.getItem('virtualKeyboardPosition');
-        if (saved) {
-            try {
-                this.position = JSON.parse(saved);
-            } catch (e) {
-                this.position = { ...this.options.defaultPosition };
-            }
-        } else {
-            this.position = { ...this.options.defaultPosition };
-        }
+        this.position = { ...this.options.defaultPosition };
     }
 
     savePosition() {
@@ -310,6 +301,12 @@ class VirtualKeyboard {
         observer.observe(document.documentElement, { 
             attributes: true, 
             attributeFilter: ['class'] 
+        });
+
+        window.addEventListener('resize', () => {
+            if (this.keyboardEl.style.display !== 'none') {
+                this.updatePositionToBottomRight();
+            }
         });
     }
 
@@ -521,10 +518,21 @@ class VirtualKeyboard {
 
     show() {
         this.keyboardEl.style.display = 'flex';
-        this.keyboardEl.style.left = this.position.x + 'px';
-        this.keyboardEl.style.top = this.position.y + 'px';
+        this.updatePositionToBottomRight();
         this.keyboardEl.style.right = 'auto';
         this.keyboardEl.style.bottom = 'auto';
+    }
+
+    updatePositionToBottomRight() {
+        const rect = this.keyboardEl.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        
+        this.position.x = viewportWidth - rect.width - 20;
+        this.position.y = viewportHeight - rect.height - 20;
+        
+        this.keyboardEl.style.left = this.position.x + 'px';
+        this.keyboardEl.style.top = this.position.y + 'px';
     }
 
     hide() {
