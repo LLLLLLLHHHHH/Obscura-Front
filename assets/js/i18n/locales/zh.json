@@ -5,7 +5,8 @@
     },
     "header": {
         "switchTheme": "切换主题",
-        "switchLang": "切换语言"
+        "switchLang": "切换语言",
+        "virtualKeyboard": "虚拟键盘"
     },
     "tools": {
         "environment": "环境",

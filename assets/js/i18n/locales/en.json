@@ -5,7 +5,8 @@
     },
     "header": {
         "switchTheme": "Switch Theme",
-        "switchLang": "Switch Language"
+        "switchLang": "Switch Language",
+        "virtualKeyboard": "Toggle Virtual Keyboard"
     },
     "tools": {
         "environment": "Environment",

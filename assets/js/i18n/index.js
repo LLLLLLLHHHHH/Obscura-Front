@@ -71,7 +71,8 @@ function updatePage() {
         const key = el.getAttribute('data-i18n-title');
         const translation = t(key);
         if (translation) {
-            el.setAttribute('title', translation);
+            el.setAttribute('data-tooltip', translation);
+            el.removeAttribute('title'); // 移除原生 title 防止双重显示
         }
     });
 
