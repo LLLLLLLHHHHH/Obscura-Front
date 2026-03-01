@@ -12,10 +12,8 @@
         "environmentDesc": "修改浏览器运行时环境，伪造浏览器指纹",
         "antidebug": "反调试",
         "antidebugDesc": "检测并阻止调试行为",
-        "placeholder2": "占位工具 2",
-        "placeholder2Desc": "这是一个预留的工具位置",
-        "placeholder3": "占位工具 3",
-        "placeholder3Desc": "这是一个预留的工具位置",
+        "devtools": "工具",
+        "devtoolsDesc": "常用开发工具集合",
         "placeholder4": "占位工具 4",
         "placeholder4Desc": "这是一个预留的工具位置",
         "placeholder5": "占位工具 5",
@@ -43,6 +41,10 @@
         "debuggerDesc": "检测并阻止调试器行为",
         "console": "Console",
         "consoleDesc": "检测控制台打开状态"
+    },
+    "devtools": {
+        "curl": "Curl 转换",
+        "curlDesc": "将 Curl 命令转换为各种编程语言的请求代码"
     },
     "modal": {
         "title": "提示",

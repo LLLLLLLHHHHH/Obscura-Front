@@ -7,7 +7,9 @@ export const ROUTES = {
     ENVIRONMENT_ASYNC: 'environment/async',
     ANTIDEBUG: 'antidebug',
     ANTIDEBUG_DEBUGGER: 'antidebug/debugger',
-    ANTIDEBUG_CONSOLE: 'antidebug/console'
+    ANTIDEBUG_CONSOLE: 'antidebug/console',
+    DEVTOOLS: 'devtools',
+    DEVTOOLS_CURL: 'devtools/curl'
 };
 
 class Router {
@@ -40,6 +42,8 @@ class Router {
             this.loadToolPage(main, hash);
         } else if (hash.startsWith(ROUTES.ANTIDEBUG)) {
             this.loadToolPage(main, hash);
+        } else if (hash.startsWith(ROUTES.DEVTOOLS)) {
+            this.loadToolPage(main, hash);
         } else {
             this.loadHomePage(main);
         }
@@ -65,6 +69,10 @@ class Router {
         if (window.antidebugTool) {
             window.antidebugTool.destroy();
             window.antidebugTool = null;
+        }
+        if (window.devTools) {
+            window.devTools.destroy();
+            window.devTools = null;
         }
 
         const toolContainer = document.getElementById('tool-container');
@@ -106,6 +114,15 @@ class Router {
                 window.antidebugTool.navigate('debugger');
             } else if (hash === ROUTES.ANTIDEBUG_CONSOLE) {
                 window.antidebugTool.navigate('console');
+            }
+        } else if (hash.startsWith(ROUTES.DEVTOOLS)) {
+            const { DevTools } = await import('./devtools.js');
+            if (!window.devTools) {
+                window.devTools = new DevTools(container);
+                window.devTools.init();
+            }
+            if (hash === ROUTES.DEVTOOLS || hash === ROUTES.DEVTOOLS_CURL) {
+                window.devTools.navigate('curl');
             }
         }
     }
