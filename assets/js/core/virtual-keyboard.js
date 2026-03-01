@@ -79,7 +79,7 @@ const OS_LAYOUTS = {
                 { key: 'shift', code: 'ShiftRight', class: 'vk-shift-key', width: 'vk-u-2-75' }
             ],
             [
-                { key: 'fn', code: 'Fn', class: 'vk-fn-key vk-function-key', width: 'vk-u-1' },
+                { key: 'fn', code: 'Fn', class: 'vk-fn-key vk-function-key', width: 'vk-u-1-25' },
                 { key: 'control', code: 'ControlLeft', class: 'vk-ctrl-key', width: 'vk-u-1' },
                 { key: 'option', code: 'AltLeft', class: 'vk-alt-key', width: 'vk-u-1' },
                 { key: 'command', code: 'MetaLeft', class: 'vk-command-key', width: 'vk-u-1-5' },
