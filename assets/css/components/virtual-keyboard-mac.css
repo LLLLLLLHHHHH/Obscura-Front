@@ -174,4 +174,5 @@
   background: var(--obscura-accent);
   border-color: var(--obscura-accent);
   color: white;
+  transition: none;
 }
