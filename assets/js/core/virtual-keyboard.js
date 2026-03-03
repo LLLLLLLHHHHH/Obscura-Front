@@ -280,7 +280,11 @@ class VirtualKeyboard {
         document.addEventListener('mouseup', () => this.endDrag());
 
         this.keyboardEl.querySelectorAll('.vk-key').forEach(key => {
-            key.addEventListener('mousedown', (e) => this.handleKeyDown(e));
+            key.setAttribute('tabindex', '-1');
+            key.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                this.handleKeyDown(e);
+            });
             key.addEventListener('mouseup', (e) => this.handleKeyUp(e));
             key.addEventListener('mouseleave', (e) => this.handleKeyLeave(e));
             
@@ -466,8 +470,11 @@ class VirtualKeyboard {
         
         this.pressedKeys.add(code);
 
+        const modifierKeys = ['ShiftLeft', 'ShiftRight', 'CapsLock', 'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight', 'Fn'];
+        const isModifierKey = modifierKeys.includes(code);
+
         if (code === 'ShiftLeft' || code === 'ShiftRight') {
-            this.state.shift = !this.state.shift;
+            this.state.shift = true;
         }
         if (code === 'CapsLock') {
             this.state.capsLock = !this.state.capsLock;
@@ -483,6 +490,10 @@ class VirtualKeyboard {
         }
 
         this.updateKeyDisplay();
+
+        if (isModifierKey) {
+            return;
+        }
 
         const displayKey = keyEl.textContent;
         
@@ -503,6 +514,10 @@ class VirtualKeyboard {
         
         const code = keyEl.dataset.code;
         this.pressedKeys.delete(code);
+        
+        if (code === 'ShiftLeft' || code === 'ShiftRight') {
+            this.state.shift = false;
+        }
         
         if (code !== 'ShiftLeft' && code !== 'ShiftRight') {
             this.updateKeyDisplay();

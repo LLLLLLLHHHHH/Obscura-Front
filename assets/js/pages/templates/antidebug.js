@@ -38,9 +38,36 @@ export const getAdContentTemplate = (view) => {
     switch (view) {
         case 'debugger':
             return `
-                <div class="ad-card">
-                    <h3 class="ad-card-title" data-i18n="ad.debugger">Debugger</h3>
-                    <p class="ad-card-desc" data-i18n="ad.debuggerDesc">检测并阻止调试器行为</p>
+                <div class="ad-card ad-card-debugger">
+                    <div class="card">
+                        <div class="wrap">
+                            <div class="terminal">
+                                <div class="head">
+                                    <div class="title">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M20 19V7H4v12h16m0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16m-7 14v-2h5v2h-5m-3.42-4L5.57 9H8.4l3.3 3.29c.39.39.39 1.03 0 1.42L8.42 17H5.59l4-4Z"/>
+                                        </svg>
+                                        <span>Debugger Control</span>
+                                    </div>
+                                </div>
+                                <div class="body" id="debuggerTerminal">
+                                    <div class="output" id="debuggerOutput">
+                                        <div class="pre">Welcome to Obscura, <span id="terminal-time"></span></div>
+                                        <div class="pre">Type "help" for available commands.</div>
+                                        <div class="pre"><br></div>
+                                    </div>
+                                    <div class="input-line">
+                                        <span class="prompt">obscura@JJH ~ %</span>
+                                        <input type="text" id="debuggerInput" class="cmd-input" autocomplete="off" spellcheck="false" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ad-card-status">
+                        <span class="status-indicator active" id="debuggerStatus"></span>
+                        <span class="status-text" id="debuggerStatusText">Running</span>
+                    </div>
                 </div>
             `;
         case 'console':

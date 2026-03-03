@@ -86,11 +86,143 @@ function initVirtualKeyboard() {
         return;
     }
 
+    function insertTextToActiveElement(text) {
+        const activeElement = document.activeElement;
+        
+        if (!activeElement) return false;
+        
+        const isEditable = 
+            activeElement.tagName === 'INPUT' ||
+            activeElement.tagName === 'TEXTAREA' ||
+            activeElement.isContentEditable;
+        
+        if (!isEditable) return false;
+        
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
+            const start = activeElement.selectionStart;
+            const end = activeElement.selectionEnd;
+            const value = activeElement.value;
+            
+            activeElement.value = value.substring(0, start) + text + value.substring(end);
+            
+            const newPos = start + text.length;
+            activeElement.setSelectionRange(newPos, newPos);
+        } else if (activeElement.isContentEditable) {
+            document.execCommand('insertText', false, text);
+        }
+        
+        activeElement.dispatchEvent(new Event('input', { bubbles: true }));
+        activeElement.dispatchEvent(new Event('change', { bubbles: true }));
+        
+        return true;
+    }
+
+    function handleBackspace() {
+        const activeElement = document.activeElement;
+        
+        if (!activeElement) return false;
+        
+        const isEditable = 
+            activeElement.tagName === 'INPUT' ||
+            activeElement.tagName === 'TEXTAREA' ||
+            activeElement.isContentEditable;
+        
+        if (!isEditable) return false;
+        
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
+            const start = activeElement.selectionStart;
+            const end = activeElement.selectionEnd;
+            
+            if (start === end && start > 0) {
+                const value = activeElement.value;
+                activeElement.value = value.substring(0, start - 1) + value.substring(end);
+                activeElement.setSelectionRange(start - 1, start - 1);
+            } else if (start !== end) {
+                const value = activeElement.value;
+                activeElement.value = value.substring(0, start) + value.substring(end);
+                activeElement.setSelectionRange(start, start);
+            }
+        } else if (activeElement.isContentEditable) {
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                if (range.startOffset > 0) {
+                    range.setStart(range.startContainer, range.startOffset - 1);
+                    range.deleteContents();
+                }
+            }
+        }
+        
+        activeElement.dispatchEvent(new Event('input', { bubbles: true }));
+        activeElement.dispatchEvent(new Event('change', { bubbles: true }));
+        
+        return true;
+    }
+
+    function handleSpecialKey(code, key) {
+        const activeElement = document.activeElement;
+        
+        if (!activeElement) return false;
+        
+        const isEditable = 
+            activeElement.tagName === 'INPUT' ||
+            activeElement.tagName === 'TEXTAREA' ||
+            activeElement.isContentEditable;
+        
+        if (!isEditable) return false;
+        
+        switch (code) {
+            case 'Enter':
+                if (activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable) {
+                    document.execCommand('insertText', false, '\n');
+                } else {
+                    activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', bubbles: true }));
+                    activeElement.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', code: 'Enter', bubbles: true }));
+                }
+                activeElement.dispatchEvent(new Event('change', { bubbles: true }));
+                return true;
+            case 'Tab':
+                document.execCommand('insertText', false, '\t');
+                return true;
+            case 'Space':
+                insertTextToActiveElement(' ');
+                return true;
+            case 'ArrowLeft':
+            case 'ArrowRight':
+            case 'ArrowUp':
+            case 'ArrowDown':
+                return false;
+            default:
+                return false;
+        }
+    }
+
     virtualKeyboard = new VirtualKeyboard({
         visible: false,
         defaultPosition: { x: -20, y: -20 },
         onInput: (data) => {
-            console.log('Virtual keyboard input:', data);
+            const { code, key, state } = data;
+            
+            if (code === 'Backspace') {
+                handleBackspace();
+                return;
+            }
+            
+            if (handleSpecialKey(code, key)) {
+                return;
+            }
+            
+            let textToInsert = key;
+            
+            if (state.shift || state.capsLock) {
+                if (key.length === 1 && /[a-z]/.test(key)) {
+                    textToInsert = key.toUpperCase();
+                }
+            }
+            
+            if (textToInsert && textToInsert.length > 0) {
+                insertTextToActiveElement(textToInsert);
+            }
         },
         onKeyPress: (data) => {
             console.log('Virtual keyboard key press:', data);
