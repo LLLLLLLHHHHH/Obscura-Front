@@ -19,7 +19,7 @@
     gap: 24px;
     flex: 1;
     min-height: 0;
-    padding: 24px 24px 0 24px;
+    padding: 24px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -95,6 +95,7 @@
 .ad-header {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 /* 默认浅色主题变量 */
@@ -291,23 +292,23 @@ html.dark .keycap::before {
         grid-template-areas: 
             "back nav"
             "content content";
-        gap: 24px; /* 保持与大分辨率一致的间距 */
+        gap: 24px;
         flex-direction: unset;
-        padding: 24px 24px 0 24px; /* 保持与大分辨率一致的内边距 */
+        padding: 24px;
     }
 
     .ad-card {
-        padding: 32px; /* 保持与大分辨率一致 */
+        padding: 32px;
     }
 
     .ad-sidebar {
         grid-area: nav;
         width: 100%;
-        min-width: 0; /* 关键：防止 grid item 溢出 */
+        min-width: 0;
     }
 
     .ad-main {
-        display: contents; /* 将子元素提升到 grid 容器 */
+        display: contents;
     }
 
     .ad-header {
@@ -315,6 +316,7 @@ html.dark .keycap::before {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
     }
 
     .ad-content {
@@ -385,7 +387,6 @@ html.dark .ad-card-debugger .card {
     position: relative;
     z-index: 10;
     border: none;
-    border-radius: 8px;
     overflow: visible;
     flex: 1;
 }
@@ -399,6 +400,8 @@ html.dark .ad-card-debugger .wrap {
     flex-direction: column;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .ad-card-debugger .head {
@@ -478,7 +481,6 @@ html.dark .ad-card-debugger .head {
     white-space: normal;
     flex: 1;
     min-height: 150px;
-    max-height: 600px;
 }
 
 html.dark .ad-card-debugger .body {
@@ -704,7 +706,6 @@ html.dark .ad-card-debugger .cmd-input {
     }
 
     .ad-card-debugger .body {
-        max-height: 500px;
         min-height: 120px;
     }
 }
