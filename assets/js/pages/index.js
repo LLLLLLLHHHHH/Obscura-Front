@@ -9,8 +9,10 @@ import { getMeteorShower } from '../core/meteor.js';
 import { getStarInteraction } from '../core/stars.js';
 import { router } from '../core/router.js';
 import VirtualKeyboard from '../core/virtual-keyboard.js';
+import { initStandee } from '../core/standee.js';
 
 let virtualKeyboard = null;
+let standeeInstances = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initDisclaimerModal();
     
     initVirtualKeyboard();
+    initStandees();
     
     initToolCards();
 
@@ -75,6 +78,20 @@ function initToolCards() {
             router.navigate(tool);
         });
     });
+}
+
+function initStandees() {
+    const standeeContainers = document.querySelectorAll('[data-standee]');
+    standeeContainers.forEach(container => {
+        const options = {};
+        const title = container.getAttribute('data-standee-title');
+        const sub = container.getAttribute('data-standee-sub');
+        if (title) options.title = title;
+        if (sub) options.sub = sub;
+        const instance = initStandee(container, options);
+        standeeInstances.push(instance);
+    });
+    window.ObscuraStandeenstances = standeeInstances;
 }
 
 function initVirtualKeyboard() {

@@ -72,9 +72,33 @@ export const getAdContentTemplate = (view) => {
             `;
         case 'console':
             return `
-                <div class="ad-card">
-                    <h3 class="ad-card-title" data-i18n="ad.console">Console</h3>
-                    <p class="ad-card-desc" data-i18n="ad.consoleDesc">检测控制台打开状态</p>
+                <div class="ad-card ad-card-console">
+                    <div class="standee-grid">
+                        <div class="standee-card" data-mojoslot="log:debug" data-standee data-standee-title="Debug" data-standee-sub="– console.debug –"></div>
+                        <div class="standee-card" data-mojoslot="log:log" data-standee data-standee-title="Log" data-standee-sub="– console.log –"></div>
+                        <div class="standee-card" data-mojoslot="log:info" data-standee data-standee-title="Info" data-standee-sub="– console.info –"></div>
+                        <div class="standee-card" data-mojoslot="log:warn" data-standee data-standee-title="Warn" data-standee-sub="– console.warn –"></div>
+                        <div class="standee-card" data-mojoslot="log:error" data-standee data-standee-title="Error" data-standee-sub="– console.error –"></div>
+                        <div class="standee-card" data-mojoslot="log:table" data-standee data-standee-title="Table" data-standee-sub="– console.table –"></div>
+                        <div class="standee-card" data-mojoslot="log:dir" data-standee data-standee-title="Dir" data-standee-sub="– console.dir –"></div>
+                        <div class="standee-card" data-mojoslot="log:dirxml" data-standee data-standee-title="Dirxml" data-standee-sub="– console.dirxml –"></div>
+                        <div class="standee-card" data-mojoslot="ctrl:trace" data-standee data-standee-title="Trace" data-standee-sub="– console.trace –"></div>
+                        <div class="standee-card" data-mojoslot="ctrl:clear" data-standee data-standee-title="Clear" data-standee-sub="– console.clear –"></div>
+                        <div class="standee-card" data-mojoslot="ctrl:assert" data-standee data-standee-title="Assert" data-standee-sub="– console.assert –"></div>
+                        <div class="standee-card" data-mojoslot="ctrl:count" data-standee data-standee-title="Count" data-standee-sub="– console.count –"></div>
+                        <div class="config-card" data-mojoslot="config:array">
+                            <div class="config-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3m2 2v14h14V5H5m2 2h10v2H7V7m0 4h10v2H7v-2m0 4h6v2H7v-2z"/></svg>
+                            </div>
+                            <div class="config-label">Array 长度</div>
+                        </div>
+                        <div class="config-card" data-mojoslot="config:table">
+                            <div class="config-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3m2 2v14h14V5H5m2 2h10v2H7V7m0 4h10v2H7v-2m0 4h6v2H7v-2z"/></svg>
+                            </div>
+                            <div class="config-label">Table 长度</div>
+                        </div>
+                    </div>
                 </div>
             `;
         default:

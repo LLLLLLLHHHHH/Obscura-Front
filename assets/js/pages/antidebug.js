@@ -1,11 +1,14 @@
 import { router, ROUTES } from '../core/router.js';
 import { antidebugTemplate, getAdContentTemplate } from './templates/antidebug.js';
 import { debuggerService } from '../services/DebuggerService.js';
+import { mojoSlotService } from '../services/MojoSlotService.js';
+import { initStandee } from '../core/standee.js';
 
 export class AntiDebugTool {
     constructor(container) {
         this.container = container;
         this.currentView = 'debugger';
+        this.consoleStandeenstances = [];
     }
 
     init() {
@@ -99,7 +102,24 @@ export class AntiDebugTool {
 
         if (view === 'debugger') {
             this.initDebuggerTerminal();
+        } else if (view === 'console') {
+            this.initConsoleStandeen();
         }
+    }
+
+    initConsoleStandeen() {
+        this.consoleStandeenstances.forEach(s => s.destroy());
+        this.consoleStandeenstances = [];
+        const standeeContainers = this.container.querySelectorAll('[data-standee]');
+        standeeContainers.forEach(container => {
+            const options = {};
+            const title = container.getAttribute('data-standee-title');
+            const sub = container.getAttribute('data-standee-sub');
+            if (title) options.title = title;
+            if (sub) options.sub = sub;
+            const instance = initStandee(container, options);
+            this.consoleStandeenstances.push(instance);
+        });
     }
 
     initDebuggerTerminal() {
