@@ -12,13 +12,17 @@ async function loadLocale(locale) {
     }
 
     try {
-        const response = await fetch(`./assets/js/i18n/locales/${locale}.json`);
+        const url = `./assets/js/i18n/locales/${locale}.json`;
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Failed to load ${locale}.json`);
         }
         const data = await response.json();
         locales[locale] = data;
         loadedLocales.add(locale);
+        if (locale === currentLocale) {
+            localeReady = true;
+        }
         return data;
     } catch (error) {
         console.error(`Error loading locale ${locale}:`, error);
@@ -39,14 +43,20 @@ async function setLocale(locale) {
         return;
     }
     currentLocale = locale;
+    localeReady = true;
     localStorage.setItem('locale', locale);
     updatePage();
 }
 
+let localeReady = false;
+
 function t(key) {
+    if (!localeReady) {
+        return key;
+    }
     const keys = key.split('.');
     let value = locales[currentLocale];
-    
+
     for (const k of keys) {
         if (value && typeof value === 'object') {
             value = value[k];
@@ -54,7 +64,7 @@ function t(key) {
             return key;
         }
     }
-    
+
     return value || key;
 }
 
@@ -117,10 +127,17 @@ async function initI18n() {
     updateHtmlLang();
 }
 
+let i18nReadyResolve;
+const i18nReady = new Promise(resolve => {
+    i18nReadyResolve = resolve;
+});
+
 export async function initI18nModule() {
     await initI18n();
+    localeReady = true;
+    i18nReadyResolve();
     updatePage();
-    
+
     const langBtn = document.getElementById('langBtn');
     if (langBtn) {
         langBtn.addEventListener('click', () => {
@@ -130,4 +147,4 @@ export async function initI18nModule() {
     }
 }
 
-export { t, getLocale, setLocale };
+export { t, getLocale, setLocale, i18nReady };

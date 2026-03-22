@@ -40,8 +40,16 @@
     "ad": {
         "debugger": "Debugger",
         "debuggerDesc": "Detect and prevent debugger activity",
-        "console": "Console",
-        "consoleDesc": "Detect console open status"
+        "consoleTitle": "Console",
+        "consoleDesc": "Detect console open status",
+        "console": {
+            "arrayHint": "Enter Array Length",
+            "tableHint": "Enter Table Length",
+            "arrayDisabled": "Array Disabled",
+            "tableDisabled": "Table Disabled",
+            "arrayLimited": "Limit {n}",
+            "tableLimited": "Limit {n}"
+        }
     },
     "modal": {
         "title": "Notice",

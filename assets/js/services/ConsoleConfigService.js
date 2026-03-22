@@ -1,8 +1,8 @@
 class ConsoleConfigService {
     constructor() {
         this.config = {
-            'config:array': { value: 100, label: 'Array 长度', min: 10, max: 1000 },
-            'config:table':  { value: 100, label: 'Table 长度',  min: 10, max: 1000 },
+            'config:array': { value: Infinity, label: 'Array 长度' },
+            'config:table':  { value: Infinity, label: 'Table 长度' },
         };
         this._applyConfig();
     }
@@ -18,21 +18,37 @@ class ConsoleConfigService {
                 configurable: true
             });
         } catch (e) {
-            // ignore
         }
     }
 
-    setValue(slotKey, value) {
+    setValue(slotKey, rawValue) {
         if (!this.config[slotKey]) return null;
         const cfg = this.config[slotKey];
-        value = Math.max(cfg.min, Math.min(cfg.max, Number(value) || cfg.value));
-        cfg.value = value;
+
+        if (rawValue === '' || rawValue === null || rawValue === undefined) {
+            cfg.value = Infinity;
+        } else {
+            const num = parseInt(rawValue, 10);
+            if (isNaN(num) || num < 0) {
+                cfg.value = Infinity;
+            } else {
+                cfg.value = num;
+            }
+        }
+
         this._applyConfig();
         return cfg.value;
     }
 
     getValue(slotKey) {
         return this.config[slotKey]?.value ?? null;
+    }
+
+    getMode(slotKey) {
+        const v = this.getValue(slotKey);
+        if (v === Infinity) return 'unlimited';
+        if (v === 0) return 'disabled';
+        return 'limited';
     }
 
     isValid(slotKey) {

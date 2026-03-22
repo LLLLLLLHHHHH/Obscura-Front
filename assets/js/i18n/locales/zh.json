@@ -40,8 +40,16 @@
     "ad": {
         "debugger": "Debugger",
         "debuggerDesc": "检测并阻止调试器行为",
-        "console": "Console",
-        "consoleDesc": "检测控制台打开状态"
+        "consoleTitle": "Console",
+        "consoleDesc": "检测控制台打开状态",
+        "console": {
+            "arrayHint": "输入数组长度",
+            "tableHint": "输入表格长度",
+            "arrayDisabled": "数组已关闭",
+            "tableDisabled": "表格已关闭",
+            "arrayLimited": "数组限制 {n} 条",
+            "tableLimited": "表格限制 {n} 条"
+        }
     },
     "devtools": {
         "curl": "Curl 转换",

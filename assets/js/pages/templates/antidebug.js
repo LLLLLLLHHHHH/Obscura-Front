@@ -8,7 +8,7 @@ export const antidebugTemplate = `
                     <span data-i18n="ad.debugger">Debugger</span>
                 </a>
                 <a href="#${ROUTES.ANTIDEBUG_CONSOLE}" class="ad-nav-item" data-view="console">
-                    <span data-i18n="ad.console">Console</span>
+                    <span data-i18n="ad.consoleTitle">Console</span>
                 </a>
             </nav>
         </div>
@@ -73,6 +73,10 @@ export const getAdContentTemplate = (view) => {
         case 'console':
             return `
                 <div class="ad-card ad-card-console">
+                    <div class="console-inputs-row">
+                        <div class="config-input-mount" data-inputslot="config:array"></div>
+                        <div class="config-input-mount" data-inputslot="config:table"></div>
+                    </div>
                     <div class="standee-grid">
                         <div class="standee-card" data-mojoslot="log:debug" data-standee data-standee-title="Debug" data-standee-sub="– console.debug –"></div>
                         <div class="standee-card" data-mojoslot="log:log" data-standee data-standee-title="Log" data-standee-sub="– console.log –"></div>
@@ -86,18 +90,6 @@ export const getAdContentTemplate = (view) => {
                         <div class="standee-card" data-mojoslot="ctrl:clear" data-standee data-standee-title="Clear" data-standee-sub="– console.clear –"></div>
                         <div class="standee-card" data-mojoslot="ctrl:assert" data-standee data-standee-title="Assert" data-standee-sub="– console.assert –"></div>
                         <div class="standee-card" data-mojoslot="ctrl:count" data-standee data-standee-title="Count" data-standee-sub="– console.count –"></div>
-                        <div class="config-card" data-mojoslot="config:array">
-                            <div class="config-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3m2 2v14h14V5H5m2 2h10v2H7V7m0 4h10v2H7v-2m0 4h6v2H7v-2z"/></svg>
-                            </div>
-                            <div class="config-label">Array 长度</div>
-                        </div>
-                        <div class="config-card" data-mojoslot="config:table">
-                            <div class="config-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3m2 2v14h14V5H5m2 2h10v2H7V7m0 4h10v2H7v-2m0 4h6v2H7v-2z"/></svg>
-                            </div>
-                            <div class="config-label">Table 长度</div>
-                        </div>
                     </div>
                 </div>
             `;

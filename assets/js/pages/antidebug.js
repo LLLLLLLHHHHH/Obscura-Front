@@ -3,12 +3,14 @@ import { antidebugTemplate, getAdContentTemplate } from './templates/antidebug.j
 import { debuggerService } from '../services/DebuggerService.js';
 import { mojoSlotService } from '../services/MojoSlotService.js';
 import { initStandee } from '../core/standee.js';
+import NumberInput from '../core/NumberInput.js';
 
 export class AntiDebugTool {
     constructor(container) {
         this.container = container;
         this.currentView = 'debugger';
         this.consoleStandeenstances = [];
+        this.consoleNumberInputs = [];
     }
 
     init() {
@@ -83,7 +85,7 @@ export class AntiDebugTool {
         });
     }
 
-    navigate(view) {
+    async navigate(view) {
         this.currentView = view;
         
         const navItems = this.container.querySelectorAll('.ad-nav-item');
@@ -104,6 +106,7 @@ export class AntiDebugTool {
             this.initDebuggerTerminal();
         } else if (view === 'console') {
             this.initConsoleStandeen();
+            await this.initConsoleNumberInputs();
         }
     }
 
@@ -120,6 +123,17 @@ export class AntiDebugTool {
             const instance = initStandee(container, options);
             this.consoleStandeenstances.push(instance);
         });
+    }
+
+    async initConsoleNumberInputs() {
+        this.consoleNumberInputs.forEach(ni => ni.wrapper.remove());
+        this.consoleNumberInputs = [];
+        const mountEls = this.container.querySelectorAll('[data-inputslot]');
+        for (const mountEl of mountEls) {
+            const slotKey = mountEl.getAttribute('data-inputslot');
+            const instance = await NumberInput.create(slotKey, mountEl);
+            this.consoleNumberInputs.push(instance);
+        }
     }
 
     initDebuggerTerminal() {
