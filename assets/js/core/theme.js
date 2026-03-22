@@ -6,8 +6,8 @@ export function initTheme() {
 
     // Function to update icon visibility
     const updateIcons = (isDark) => {
-        if (sunIcon) sunIcon.style.display = isDark ? 'block' : 'none';
-        if (moonIcon) moonIcon.style.display = isDark ? 'none' : 'block';
+        if (sunIcon) sunIcon.style.display = isDark ? 'none' : 'block';
+        if (moonIcon) moonIcon.style.display = isDark ? 'block' : 'none';
     };
 
     // Initialize theme from local storage
