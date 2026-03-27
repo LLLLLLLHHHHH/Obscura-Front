@@ -363,12 +363,8 @@ html.dark .keycap::before {
     flex-shrink: 0;
     cursor: pointer;
     transition: all 0.2s ease;
-}
-
-.fp-reset:hover,
-.fp-reset:focus-visible {
-    color: var(--text);
-    border-color: var(--obscura-accent);
+    outline: none;
+    box-shadow: none;
 }
 
 .fp-filters {
