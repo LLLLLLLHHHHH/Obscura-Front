@@ -32,9 +32,26 @@
         "functions": "Function Fix",
         "functionsDesc": "Fix function return values or modify function behavior",
         "fingerprint": "Fingerprint Config",
-        "fingerprintDesc": "Fake browser fingerprint information",
         "async": "Async Interception",
-        "asyncDesc": "Intercept and modify async operation results"
+        "asyncDesc": "Intercept and modify async operation results",
+        "fp": {
+            "loading": "Loading fingerprint catalog...",
+            "loadFailed": "Failed to load fingerprint catalog",
+            "retry": "Retry",
+            "sectionAll": "All",
+            "reset": "Reset Filters",
+            "searchPlaceholder": "Search id / path / slot",
+            "permissionAll": "All Permissions",
+            "permissionEditable": "Editable",
+            "permissionReadonly": "Read Only",
+            "typeAll": "All Types",
+            "readonly": "Read Only",
+            "current": "Value",
+            "empty": "No results under current filters",
+            "total": "Total",
+            "prev": "Prev",
+            "next": "Next"
+        }
     },
     "ad": {
         "debugger": "Debugger",

@@ -32,9 +32,26 @@
         "functions": "函数固定",
         "functionsDesc": "固定函数返回值或修改函数行为",
         "fingerprint": "指纹配置",
-        "fingerprintDesc": "伪造浏览器指纹信息",
         "async": "异步拦截",
-        "asyncDesc": "拦截并修改异步操作的结果"
+        "asyncDesc": "拦截并修改异步操作的结果",
+        "fp": {
+            "loading": "正在加载指纹目录...",
+            "loadFailed": "指纹目录加载失败",
+            "retry": "重试",
+            "sectionAll": "全部",
+            "reset": "重置筛选",
+            "searchPlaceholder": "搜索 id / path / slot",
+            "permissionAll": "全部权限",
+            "permissionEditable": "可修改",
+            "permissionReadonly": "只读",
+            "typeAll": "全部类型",
+            "readonly": "只读",
+            "current": "Value",
+            "empty": "当前筛选条件下无结果",
+            "total": "总数",
+            "prev": "上一页",
+            "next": "下一页"
+        }
     },
     "ad": {
         "debugger": "Debugger",

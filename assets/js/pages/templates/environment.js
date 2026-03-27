@@ -58,9 +58,12 @@ export const getEnvContentTemplate = (view) => {
             `;
         case 'fingerprint':
             return `
-                <div class="env-card">
-                    <h3 class="env-card-title" data-i18n="env.fingerprint">指纹配置</h3>
-                    <p class="env-card-desc" data-i18n="env.fingerprintDesc">伪造浏览器指纹信息</p>
+                <div class="env-card fp-console-card">
+                    <div class="fp-console-root" id="fpConsoleRoot">
+                        <div class="fp-loading">
+                            <p data-i18n="env.fp.loading">正在加载指纹目录...</p>
+                        </div>
+                    </div>
                 </div>
             `;
         case 'async':

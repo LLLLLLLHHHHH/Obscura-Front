@@ -1,6 +1,7 @@
 import { consoleLogService } from './ConsoleLogService.js';
 import { consoleControlService } from './ConsoleControlService.js';
 import { consoleConfigService } from './ConsoleConfigService.js';
+import { fingerprintService } from './FingerprintService.js';
 
 class MojoSlotService {
     constructor() {
@@ -8,6 +9,7 @@ class MojoSlotService {
             'log':   consoleLogService,
             'ctrl':  consoleControlService,
             'config': consoleConfigService,
+            'fingerprint': fingerprintService,
         };
     }
 
@@ -64,6 +66,7 @@ class MojoSlotService {
             'log':    consoleLogService.getAllSlots(),
             'ctrl':   consoleControlService.getAllSlots(),
             'config': consoleConfigService.getAllConfig(),
+            'fingerprint': fingerprintService.getAllSlots(),
         };
     }
 
