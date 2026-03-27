@@ -234,6 +234,15 @@ export class EnvironmentTool {
             }
         });
 
+        content.addEventListener('dblclick', (event) => {
+            const pathEl = event.target.closest('.fp-row-path');
+            const valueEl = event.target.closest('.fp-row-current-value');
+            if (pathEl || valueEl) {
+                const text = event.target.textContent || '';
+                this.copyToClipboard(text);
+            }
+        });
+
         if (!this.handleWindowResize) {
             this.handleWindowResize = () => {
                 if (this.currentView !== 'fingerprint') {
@@ -499,6 +508,24 @@ export class EnvironmentTool {
         }
     }
 
+    copyToClipboard(text) {
+        if (!text) {
+            return;
+        }
+        navigator.clipboard.writeText(text).then(() => {
+            const toast = document.getElementById('fpCopyToast');
+            if (toast) {
+                toast.textContent = 'Copied: ' + text;
+                toast.classList.add('is-visible');
+                setTimeout(() => {
+                    toast.classList.remove('is-visible');
+                }, 1500);
+            }
+        }).catch(() => {
+            console.error('Failed to copy text');
+        });
+    }
+
     renderFingerprintControl(item) {
         if (!item.editable) {
             return `
@@ -678,6 +705,7 @@ export class EnvironmentTool {
                         </button>
                     </div>
                 </div>
+                <div class="fp-copy-toast" id="fpCopyToast"></div>
             </section>
         `;
     }
