@@ -27,7 +27,6 @@
         "placeholder8Desc": "This is a reserved tool position"
     },
     "env": {
-        "back": "Back",
         "hooks": "Object Hooks",
         "hooksDesc": "Intercept and modify object property read/write operations",
         "functions": "Function Fix",
@@ -41,7 +40,11 @@
         "debugger": "Debugger",
         "debuggerDesc": "Detect and prevent debugger activity",
         "consoleTitle": "Console",
-        "consoleDesc": "Detect console open status",
+        "controlTitle": "Debugger Control",
+        "terminalWelcome": "Welcome to Obscura,",
+        "terminalHelp": "Type \"help\" for available commands.",
+        "statusRunning": "Running",
+        "statusStopped": "Stopped",
         "console": {
             "arrayHint": "Enter Array Length",
             "tableHint": "Enter Table Length",
@@ -51,10 +54,17 @@
             "tableLimited": "Limit {n}"
         }
     },
+    "devtools": {
+        "curl": "Curl Converter",
+        "curlDesc": "Convert curl command to request code in multiple languages"
+    },
     "modal": {
         "title": "Notice",
         "body": "This feature is under development, please stay tuned!",
         "ok": "OK"
+    },
+    "common": {
+        "close": "Close"
     },
     "disclaimer": {
         "title": "Disclaimer",

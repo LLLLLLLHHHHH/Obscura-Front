@@ -4,29 +4,50 @@ import { debuggerService } from '../services/DebuggerService.js';
 import { mojoSlotService } from '../services/MojoSlotService.js';
 import { initStandee } from '../core/standee.js';
 import NumberInput from '../core/NumberInput.js';
+import { getLocale, refreshI18n, t } from '../i18n/index.js';
 
 export class AntiDebugTool {
     constructor(container) {
         this.container = container;
         this.currentView = 'debugger';
         this.consoleStandeenstances = [];
+        this.consoleStandeeHandlers = [];
         this.consoleNumberInputs = [];
+        this.debuggerStatusListener = null;
     }
 
     init() {
         this.render();
         this.bindEvents();
         this.initDebuggerServiceListener();
+        this.initLocaleChangedListener();
     }
 
     initDebuggerServiceListener() {
-        debuggerService.addListener((status) => {
+        if (this.debuggerStatusListener) {
+            return;
+        }
+        this.debuggerStatusListener = () => {
             this.updateDebuggerStatus();
-        });
+        };
+        debuggerService.addListener(this.debuggerStatusListener);
+    }
+
+    initLocaleChangedListener() {
+        if (this.localeChangedListener) {
+            return;
+        }
+        this.localeChangedListener = () => {
+            if (this.currentView === 'debugger') {
+                this.updateTerminalTime();
+            }
+        };
+        window.addEventListener('obscura:locale-changed', this.localeChangedListener);
     }
 
     render() {
         this.container.innerHTML = antidebugTemplate;
+        refreshI18n();
     }
 
     bindEvents() {
@@ -101,6 +122,7 @@ export class AntiDebugTool {
         if (!content) return;
 
         content.innerHTML = getAdContentTemplate(view);
+        refreshI18n();
 
         if (view === 'debugger') {
             this.initDebuggerTerminal();
@@ -111,16 +133,29 @@ export class AntiDebugTool {
     }
 
     initConsoleStandeen() {
+        this.consoleStandeeHandlers.forEach(({ container, handler }) => {
+            container.removeEventListener('click', handler);
+        });
+        this.consoleStandeeHandlers = [];
         this.consoleStandeenstances.forEach(s => s.destroy());
         this.consoleStandeenstances = [];
         const standeeContainers = this.container.querySelectorAll('[data-standee]');
         standeeContainers.forEach(container => {
+            const slotKey = container.getAttribute('data-mojoslot');
+            if (!slotKey || !mojoSlotService.isValid(slotKey)) {
+                return;
+            }
             const options = {};
             const title = container.getAttribute('data-standee-title');
             const sub = container.getAttribute('data-standee-sub');
             if (title) options.title = title;
             if (sub) options.sub = sub;
             const instance = initStandee(container, options);
+            const clickHandler = () => {
+                mojoSlotService.invoke(slotKey, { source: 'standee' });
+            };
+            container.addEventListener('click', clickHandler);
+            this.consoleStandeeHandlers.push({ container, handler: clickHandler });
             this.consoleStandeenstances.push(instance);
         });
     }
@@ -131,6 +166,9 @@ export class AntiDebugTool {
         const mountEls = this.container.querySelectorAll('[data-inputslot]');
         for (const mountEl of mountEls) {
             const slotKey = mountEl.getAttribute('data-inputslot');
+            if (!slotKey || !mojoSlotService.isValid(slotKey)) {
+                continue;
+            }
             const instance = await NumberInput.create(slotKey, mountEl);
             this.consoleNumberInputs.push(instance);
         }
@@ -181,7 +219,8 @@ export class AntiDebugTool {
                 second: 'numeric',
                 hour12: true 
             };
-            timeElement.textContent = now.toLocaleString('en-US', options);
+            const locale = getLocale() === 'en' ? 'en-US' : 'zh-CN';
+            timeElement.textContent = now.toLocaleString(locale, options);
         }
     }
 
@@ -232,7 +271,9 @@ export class AntiDebugTool {
         }
 
         if (statusText) {
-            statusText.textContent = debuggerService.getStatusText();
+            const key = debuggerService.isRunning() ? 'ad.statusRunning' : 'ad.statusStopped';
+            statusText.textContent = t(key);
+            statusText.setAttribute('data-i18n', key);
         }
     }
 
@@ -246,6 +287,18 @@ export class AntiDebugTool {
         if (this.timeInterval) {
             clearInterval(this.timeInterval);
         }
+        if (this.debuggerStatusListener) {
+            debuggerService.removeListener(this.debuggerStatusListener);
+            this.debuggerStatusListener = null;
+        }
+        if (this.localeChangedListener) {
+            window.removeEventListener('obscura:locale-changed', this.localeChangedListener);
+            this.localeChangedListener = null;
+        }
+        this.consoleStandeeHandlers.forEach(({ container, handler }) => {
+            container.removeEventListener('click', handler);
+        });
+        this.consoleStandeeHandlers = [];
         if (this.handleKeyDown) {
             document.removeEventListener('keydown', this.handleKeyDown);
         }

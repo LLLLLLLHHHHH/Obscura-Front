@@ -46,6 +46,9 @@ async function setLocale(locale) {
     localeReady = true;
     localStorage.setItem('locale', locale);
     updatePage();
+    window.dispatchEvent(new CustomEvent('obscura:locale-changed', {
+        detail: { locale: currentLocale }
+    }));
 }
 
 let localeReady = false;
@@ -71,7 +74,11 @@ function t(key) {
 function updatePage() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        const translation = t(key);
+        let translation = t(key);
+        if (el.hasAttribute('data-i18n-n')) {
+            const n = el.getAttribute('data-i18n-n');
+            translation = translation.replace('{n}', n);
+        }
         if (translation) {
             el.textContent = translation;
         }
@@ -91,6 +98,14 @@ function updatePage() {
         const translation = t(key);
         if (translation) {
             el.setAttribute('placeholder', translation);
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria-label');
+        const translation = t(key);
+        if (translation) {
+            el.setAttribute('aria-label', translation);
         }
     });
 
@@ -147,4 +162,8 @@ export async function initI18nModule() {
     }
 }
 
-export { t, getLocale, setLocale, i18nReady };
+function refreshI18n() {
+    updatePage();
+}
+
+export { t, getLocale, setLocale, i18nReady, refreshI18n };

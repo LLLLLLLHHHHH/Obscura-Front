@@ -18,11 +18,13 @@ class MojoSlotService {
 
     isValid(slotKey) {
         const svc = this._getService(slotKey);
+        console.log('[MojoStub][MojoSlotService.isValid]', { slotKey, service: slotKey.split(':')[0] });
         return svc ? svc.isValid(slotKey) : false;
     }
 
     toggle(slotKey) {
         const svc = this._getService(slotKey);
+        console.log('[MojoStub][MojoSlotService.toggle]', { slotKey, service: slotKey.split(':')[0] });
         if (svc && typeof svc.toggle === 'function') {
             return svc.toggle(slotKey);
         }
@@ -31,6 +33,7 @@ class MojoSlotService {
 
     isEnabled(slotKey) {
         const svc = this._getService(slotKey);
+        console.log('[MojoStub][MojoSlotService.isEnabled]', { slotKey, service: slotKey.split(':')[0] });
         if (svc && typeof svc.isEnabled === 'function') {
             return svc.isEnabled(slotKey);
         }
@@ -39,6 +42,7 @@ class MojoSlotService {
 
     setValue(slotKey, value) {
         const svc = this._getService(slotKey);
+        console.log('[MojoStub][MojoSlotService.setValue]', { slotKey, value, service: slotKey.split(':')[0] });
         if (svc && typeof svc.setValue === 'function') {
             return svc.setValue(slotKey, value);
         }
@@ -47,6 +51,7 @@ class MojoSlotService {
 
     getValue(slotKey) {
         const svc = this._getService(slotKey);
+        console.log('[MojoStub][MojoSlotService.getValue]', { slotKey, service: slotKey.split(':')[0] });
         if (svc && typeof svc.getValue === 'function') {
             return svc.getValue(slotKey);
         }
@@ -54,6 +59,7 @@ class MojoSlotService {
     }
 
     getAllSlots() {
+        console.log('[MojoStub][MojoSlotService.getAllSlots]');
         return {
             'log':    consoleLogService.getAllSlots(),
             'ctrl':   consoleControlService.getAllSlots(),
@@ -63,6 +69,7 @@ class MojoSlotService {
 
     invoke(slotKey, ...args) {
         const svc = this._getService(slotKey);
+        console.log('[MojoStub][MojoSlotService.invoke]', { slotKey, args, service: slotKey.split(':')[0] });
         if (svc && typeof svc.invoke === 'function') {
             svc.invoke(slotKey, ...args);
         }

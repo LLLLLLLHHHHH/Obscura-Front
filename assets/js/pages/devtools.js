@@ -1,5 +1,6 @@
 import { router, ROUTES } from '../core/router.js';
 import { devtoolsTemplate, getDevToolsContentTemplate } from './templates/devtools.js';
+import { refreshI18n } from '../i18n/index.js';
 
 export class DevTools {
     constructor(container) {
@@ -14,6 +15,7 @@ export class DevTools {
 
     render() {
         this.container.innerHTML = devtoolsTemplate;
+        refreshI18n();
     }
 
     bindEvents() {
@@ -88,6 +90,7 @@ export class DevTools {
         if (!content) return;
 
         content.innerHTML = getDevToolsContentTemplate(view);
+        refreshI18n();
     }
 
     destroy() {

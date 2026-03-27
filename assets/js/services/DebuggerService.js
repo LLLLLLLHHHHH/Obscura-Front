@@ -6,7 +6,7 @@ export class DebuggerService {
 
     start() {
         this.status = 'running';
-        // TODO: 后续接入 Mojo 接口卡槽，连接真实的调试器后端
+        console.log('[MojoStub][DebuggerService.start]', { status: this.status });
         this.notifyListeners();
         return {
             response: 'Debugger started.',
@@ -16,7 +16,7 @@ export class DebuggerService {
 
     stop() {
         this.status = 'stopped';
-        // TODO: 后续接入 Mojo 接口卡槽，断开与调试器后端的连接
+        console.log('[MojoStub][DebuggerService.stop]', { status: this.status });
         this.notifyListeners();
         return {
             response: 'Debugger stopped.',
@@ -38,6 +38,7 @@ export class DebuggerService {
 
     executeCommand(cmd) {
         const cmdLower = cmd.toLowerCase();
+        console.log('[MojoStub][DebuggerService.executeCommand]', { cmd });
         
         switch (cmdLower) {
             case 'start debugger':
@@ -76,6 +77,7 @@ export class DebuggerService {
     }
 
     notifyListeners() {
+        console.log('[MojoStub][DebuggerService.notifyListeners]', { listenerCount: this.listeners.length, status: this.status });
         this.listeners.forEach(callback => {
             callback(this.status);
         });

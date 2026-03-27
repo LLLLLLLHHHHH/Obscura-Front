@@ -47,13 +47,13 @@ export const getAdContentTemplate = (view) => {
                                         <svg viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M20 19V7H4v12h16m0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16m-7 14v-2h5v2h-5m-3.42-4L5.57 9H8.4l3.3 3.29c.39.39.39 1.03 0 1.42L8.42 17H5.59l4-4Z"/>
                                         </svg>
-                                        <span>Debugger Control</span>
+                                        <span data-i18n="ad.controlTitle">Debugger Control</span>
                                     </div>
                                 </div>
                                 <div class="body" id="debuggerTerminal">
                                     <div class="output" id="debuggerOutput">
-                                        <div class="pre">Welcome to Obscura, <span id="terminal-time"></span></div>
-                                        <div class="pre">Type "help" for available commands.</div>
+                                        <div class="pre"><span data-i18n="ad.terminalWelcome">Welcome to Obscura,</span> <span id="terminal-time"></span></div>
+                                        <div class="pre" data-i18n="ad.terminalHelp">Type "help" for available commands.</div>
                                         <div class="pre"><br></div>
                                     </div>
                                     <div class="input-line">
@@ -66,7 +66,7 @@ export const getAdContentTemplate = (view) => {
                     </div>
                     <div class="ad-card-status">
                         <span class="status-indicator active" id="debuggerStatus"></span>
-                        <span class="status-text" id="debuggerStatusText">Running</span>
+                        <span class="status-text" id="debuggerStatusText" data-i18n="ad.statusRunning">Running</span>
                     </div>
                 </div>
             `;

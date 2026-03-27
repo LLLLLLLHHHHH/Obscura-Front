@@ -52,10 +52,10 @@ class Router {
     async loadToolPage(main, hash) {
         const toolContainer = document.getElementById('tool-container');
         if (toolContainer) {
-            toolContainer.style.display = 'flex'; // 使用 flex 以保持样式
+            toolContainer.classList.remove('is-hidden');
             const toolsSection = main.querySelector('.tools');
             if (toolsSection) {
-                toolsSection.style.display = 'none';
+                toolsSection.classList.add('is-hidden');
             }
             this.loadTool(hash);
         }
@@ -77,11 +77,11 @@ class Router {
 
         const toolContainer = document.getElementById('tool-container');
         if (toolContainer) {
-            toolContainer.style.display = 'none';
+            toolContainer.classList.add('is-hidden');
         }
         const toolsSection = main.querySelector('.tools');
         if (toolsSection) {
-            toolsSection.style.display = 'block';
+            toolsSection.classList.remove('is-hidden');
         }
     }
 

@@ -26,6 +26,10 @@ export class Standee {
     this.currentRotY = this.options.origY;
     this.pointerId = null;
     this.mojoslot = this.container.dataset.mojoslot || null;
+    this.boundOnPointerDown = this.onPointerDown.bind(this);
+    this.boundOnPointerMove = this.onPointerMove.bind(this);
+    this.boundOnPointerUp = this.onPointerUp.bind(this);
+    this.boundOnPointerCancel = this.onPointerCancel.bind(this);
 
     this.render();
     this.bindEvents();
@@ -53,10 +57,10 @@ export class Standee {
   }
 
   bindEvents() {
-    this.standee.addEventListener('pointerdown', this.onPointerDown.bind(this));
-    this.standee.addEventListener('pointermove', this.onPointerMove.bind(this));
-    this.standee.addEventListener('pointerup', this.onPointerUp.bind(this));
-    this.standee.addEventListener('pointercancel', this.onPointerCancel.bind(this));
+    this.standee.addEventListener('pointerdown', this.boundOnPointerDown);
+    this.standee.addEventListener('pointermove', this.boundOnPointerMove);
+    this.standee.addEventListener('pointerup', this.boundOnPointerUp);
+    this.standee.addEventListener('pointercancel', this.boundOnPointerCancel);
   }
 
   onPointerDown(e) {
@@ -220,10 +224,10 @@ export class Standee {
   }
 
   destroy() {
-    this.standee.removeEventListener('pointerdown', this.onPointerDown);
-    this.standee.removeEventListener('pointermove', this.onPointerMove);
-    this.standee.removeEventListener('pointerup', this.onPointerUp);
-    this.standee.removeEventListener('pointercancel', this.onPointerCancel);
+    this.standee.removeEventListener('pointerdown', this.boundOnPointerDown);
+    this.standee.removeEventListener('pointermove', this.boundOnPointerMove);
+    this.standee.removeEventListener('pointerup', this.boundOnPointerUp);
+    this.standee.removeEventListener('pointercancel', this.boundOnPointerCancel);
     this.container.innerHTML = '';
   }
 }

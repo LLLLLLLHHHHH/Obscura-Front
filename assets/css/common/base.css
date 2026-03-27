@@ -49,3 +49,7 @@ html.theme-switching *::before,
 html.theme-switching *::after {
     transition: none !important;
 }
+
+.is-hidden {
+    display: none !important;
+}

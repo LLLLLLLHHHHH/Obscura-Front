@@ -25,7 +25,7 @@
                     <span class="lang-text">EN</span>
                 </button>
                 <button class="theme-btn" id="themeBtn" data-i18n-title="header.switchTheme">
-                    <svg class="sun-icon" viewBox="0 0 24 24" style="display: block;">
+                    <svg class="sun-icon" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="6" fill="currentColor" stroke="none"></circle>
                         <line x1="12" y1="2" x2="12" y2="4"></line>
                         <line x1="12" y1="20" x2="12" y2="22"></line>
@@ -36,7 +36,7 @@
                         <line x1="6.34" y1="17.66" x2="4.93" y2="19.07"></line>
                         <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
                     </svg>
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                    <svg class="moon-icon is-hidden" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         <polygon points="18.5 2.5 19.5 5.5 22.5 6.5 19.5 7.5 18.5 10.5 17.5 7.5 14.5 6.5 17.5 5.5"></polygon>
                     </svg>
@@ -118,7 +118,7 @@
     </section>
 
     <!-- 工具页面容器 -->
-    <div id="tool-container" style="display: none;">
+    <div id="tool-container" class="is-hidden">
         <div id="tool-content"></div>
     </div>
     </main>
@@ -139,7 +139,7 @@
               <span class="mac-control-yellow"></span>
             </div>
                 <span class="dev-modal-title" id="devModalTitle" data-i18n="modal.title">提示</span>
-                <button class="dev-modal-close-btn dev-modal-close" aria-label="Close">X</button>
+                <button class="dev-modal-close-btn dev-modal-close" aria-label="Close" data-i18n-aria-label="common.close">X</button>
             </div>
             <div class="dev-modal-body" data-i18n="modal.body">
                 此功能正在开发中，敬请期待！
@@ -160,7 +160,7 @@
                     <span class="mac-control-green"></span>
                 </div>
                 <span class="disclaimer-modal-title" id="disclaimerModalTitle" data-i18n="disclaimer.title">免责声明</span>
-                <button class="disclaimer-modal-close-btn" id="disclaimerCloseX" aria-label="Close">X</button>
+                <button class="disclaimer-modal-close-btn" id="disclaimerCloseX" aria-label="Close" data-i18n-aria-label="common.close">X</button>
             </div>
             <div class="disclaimer-modal-body">
                 <p class="intro" data-i18n="disclaimer.intro"></p>

@@ -46,11 +46,14 @@ Obscura-Front/
 │   │   ├── pages/        # 页面特定样式
 │   │   └── style.css     # 样式入口
 │   ├── js/
-│   │   ├── core/         # 核心逻辑（草地、流星、主题、特效）
-│   │   ├── i18n/         # 国际化模块
-│   │   └── pages/        # 页面入口脚本
-│   └── icons/            # 图标资源
+│   │   ├── core/         # 核心逻辑（主题、路由、特效、组件）
+│   │   ├── i18n/         # 国际化模块与语言包
+│   │   ├── pages/        # 页面入口脚本与模板
+│   │   └── services/     # Mojo 后端卡槽与功能服务
+├── earth.html            # Earth 页面
 ├── index.html            # 主页
+├── sun.html              # Sun 页面
+├── .gitignore            # Git 忽略配置
 └── README.md             # 项目说明
 ```
 

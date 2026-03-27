@@ -27,7 +27,6 @@
         "placeholder8Desc": "这是一个预留的工具位置"
     },
     "env": {
-        "back": "返回",
         "hooks": "对象钩子",
         "hooksDesc": "拦截并修改对象属性的读取和写入操作",
         "functions": "函数固定",
@@ -41,7 +40,11 @@
         "debugger": "Debugger",
         "debuggerDesc": "检测并阻止调试器行为",
         "consoleTitle": "Console",
-        "consoleDesc": "检测控制台打开状态",
+        "controlTitle": "调试控制台",
+        "terminalWelcome": "欢迎使用 Obscura，",
+        "terminalHelp": "输入 \"help\" 查看可用命令。",
+        "statusRunning": "运行中",
+        "statusStopped": "已停止",
         "console": {
             "arrayHint": "输入数组长度",
             "tableHint": "输入表格长度",
@@ -59,6 +62,9 @@
         "title": "提示",
         "body": "此功能正在开发中，敬请期待！",
         "ok": "确定"
+    },
+    "common": {
+        "close": "关闭"
     },
     "disclaimer": {
         "title": "免责声明",

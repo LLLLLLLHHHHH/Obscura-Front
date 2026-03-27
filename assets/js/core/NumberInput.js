@@ -1,4 +1,4 @@
-import { consoleConfigService } from '../services/ConsoleConfigService.js';
+import { mojoSlotService } from '../services/MojoSlotService.js';
 import { t, i18nReady } from '../i18n/index.js';
 
 class NumberInput {
@@ -59,19 +59,22 @@ class NumberInput {
 
     handleInput() {
         const raw = this.inputEl.value;
-        consoleConfigService.setValue(this.slotKey, raw);
+        mojoSlotService.setValue(this.slotKey, raw);
         if (raw === '0') {
             const key = `ad.console.${this._slotName}Disabled`;
             this.labelEl.textContent = t(key);
             this.labelEl.setAttribute('data-i18n', key);
+            this.labelEl.removeAttribute('data-i18n-n');
         } else if (raw && raw !== '') {
             const key = `ad.console.${this._slotName}Limited`;
             this.labelEl.textContent = t(key).replace('{n}', raw);
             this.labelEl.setAttribute('data-i18n', key);
+            this.labelEl.setAttribute('data-i18n-n', raw);
         } else {
             const key = `ad.console.${this._slotName}Hint`;
             this.labelEl.textContent = t(key);
             this.labelEl.setAttribute('data-i18n', key);
+            this.labelEl.removeAttribute('data-i18n-n');
         }
     }
 }

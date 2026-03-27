@@ -4,21 +4,6 @@ class ConsoleConfigService {
             'config:array': { value: Infinity, label: 'Array 长度' },
             'config:table':  { value: Infinity, label: 'Table 长度' },
         };
-        this._applyConfig();
-    }
-
-    _applyConfig() {
-        try {
-            Object.defineProperty(Array.prototype, '__maxLength', {
-                get: () => this.config['config:array'].value,
-                configurable: true
-            });
-            Object.defineProperty(Array.prototype, '__maxTableLength', {
-                get: () => this.config['config:table'].value,
-                configurable: true
-            });
-        } catch (e) {
-        }
     }
 
     setValue(slotKey, rawValue) {
@@ -36,7 +21,7 @@ class ConsoleConfigService {
             }
         }
 
-        this._applyConfig();
+        console.log('[MojoStub][ConsoleConfigService.setValue]', { slotKey, rawValue, value: cfg.value });
         return cfg.value;
     }
 

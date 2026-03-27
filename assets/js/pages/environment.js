@@ -1,5 +1,6 @@
 import { router, ROUTES } from '../core/router.js';
 import { environmentTemplate, getEnvContentTemplate } from './templates/environment.js';
+import { refreshI18n } from '../i18n/index.js';
 
 export class EnvironmentTool {
     constructor(container) {
@@ -14,6 +15,7 @@ export class EnvironmentTool {
 
     render() {
         this.container.innerHTML = environmentTemplate;
+        refreshI18n();
     }
 
     bindEvents() {
@@ -88,6 +90,7 @@ export class EnvironmentTool {
         if (!content) return;
 
         content.innerHTML = getEnvContentTemplate(view);
+        refreshI18n();
     }
 
     destroy() {
