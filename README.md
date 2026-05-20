@@ -48,8 +48,7 @@ Obscura-Front/
 │   ├── js/
 │   │   ├── core/         # 核心逻辑（主题、路由、特效、组件）
 │   │   ├── i18n/         # 国际化模块与语言包
-│   │   ├── pages/        # 页面入口脚本与模板
-│   │   └── services/     # Mojo 后端卡槽与功能服务
+│   │   └── pages/        # 页面入口脚本与模板
 ├── earth.html            # Earth 页面
 ├── index.html            # 主页
 ├── sun.html              # Sun 页面

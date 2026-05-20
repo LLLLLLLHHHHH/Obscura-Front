@@ -1,15 +1,32 @@
 export const ROUTES = {
     HOME: '',
-    ENVIRONMENT: 'environment',
-    ENVIRONMENT_HOOKS: 'environment/hooks',
-    ENVIRONMENT_FUNCTIONS: 'environment/functions',
-    ENVIRONMENT_FINGERPRINT: 'environment/fingerprint',
-    ENVIRONMENT_ASYNC: 'environment/async',
-    ANTIDEBUG: 'antidebug',
-    ANTIDEBUG_DEBUGGER: 'antidebug/debugger',
-    ANTIDEBUG_CONSOLE: 'antidebug/console',
-    DEVTOOLS: 'devtools',
-    DEVTOOLS_CURL: 'devtools/curl'
+    PLACEHOLDER1: 'placeholder1',
+    PLACEHOLDER2: 'placeholder2',
+    PLACEHOLDER3: 'placeholder3'
+};
+
+const PLACEHOLDER_CONFIGS = {
+    [ROUTES.PLACEHOLDER1]: {
+        route: ROUTES.PLACEHOLDER1,
+        titleKey: 'placeholderPages.placeholder1Title',
+        descKey: 'placeholderPages.placeholder1Desc',
+        fallbackTitle: '占位工具 1',
+        fallbackDesc: '这是一个预留的工具位置，可作为后续功能模板。'
+    },
+    [ROUTES.PLACEHOLDER2]: {
+        route: ROUTES.PLACEHOLDER2,
+        titleKey: 'placeholderPages.placeholder2Title',
+        descKey: 'placeholderPages.placeholder2Desc',
+        fallbackTitle: '占位工具 2',
+        fallbackDesc: '这是一个预留的工具位置，可作为后续功能模板。'
+    },
+    [ROUTES.PLACEHOLDER3]: {
+        route: ROUTES.PLACEHOLDER3,
+        titleKey: 'placeholderPages.placeholder3Title',
+        descKey: 'placeholderPages.placeholder3Desc',
+        fallbackTitle: '占位工具 3',
+        fallbackDesc: '这是一个预留的工具位置，可作为后续功能模板。'
+    }
 };
 
 class Router {
@@ -38,11 +55,7 @@ class Router {
         const main = document.querySelector('main');
         if (!main) return;
 
-        if (hash.startsWith(ROUTES.ENVIRONMENT)) {
-            this.loadToolPage(main, hash);
-        } else if (hash.startsWith(ROUTES.ANTIDEBUG)) {
-            this.loadToolPage(main, hash);
-        } else if (hash.startsWith(ROUTES.DEVTOOLS)) {
+        if (PLACEHOLDER_CONFIGS[hash]) {
             this.loadToolPage(main, hash);
         } else {
             this.loadHomePage(main);
@@ -62,17 +75,10 @@ class Router {
     }
 
     loadHomePage(main) {
-        if (window.environmentTool) {
-            window.environmentTool.destroy();
-            window.environmentTool = null;
-        }
-        if (window.antidebugTool) {
-            window.antidebugTool.destroy();
-            window.antidebugTool = null;
-        }
-        if (window.devTools) {
-            window.devTools.destroy();
-            window.devTools = null;
+        if (window.placeholderTool) {
+            window.placeholderTool.destroy();
+            window.placeholderTool = null;
+            window.placeholderToolRoute = null;
         }
 
         const toolContainer = document.getElementById('tool-container');
@@ -89,41 +95,18 @@ class Router {
         const container = document.getElementById('tool-content');
         if (!container) return;
 
-        if (hash.startsWith(ROUTES.ENVIRONMENT)) {
-            const { EnvironmentTool } = await import('../pages/environment.js');
-            if (!window.environmentTool) {
-                window.environmentTool = new EnvironmentTool(container);
-                window.environmentTool.init();
+        const config = PLACEHOLDER_CONFIGS[hash];
+        if (config) {
+            const { PlaceholderTool } = await import('../pages/placeholder.js');
+            if (!window.placeholderTool || window.placeholderToolRoute !== hash) {
+                if (window.placeholderTool) {
+                    window.placeholderTool.destroy();
+                }
+                window.placeholderTool = new PlaceholderTool(container, config);
+                window.placeholderToolRoute = hash;
+                window.placeholderTool.init();
             }
-            if (hash === ROUTES.ENVIRONMENT || hash === ROUTES.ENVIRONMENT_HOOKS) {
-                window.environmentTool.navigate('hooks');
-            } else if (hash === ROUTES.ENVIRONMENT_FUNCTIONS) {
-                window.environmentTool.navigate('functions');
-            } else if (hash === ROUTES.ENVIRONMENT_FINGERPRINT) {
-                window.environmentTool.navigate('fingerprint');
-            } else if (hash === ROUTES.ENVIRONMENT_ASYNC) {
-                window.environmentTool.navigate('async');
-            }
-        } else if (hash.startsWith(ROUTES.ANTIDEBUG)) {
-            const { AntiDebugTool } = await import('../pages/antidebug.js');
-            if (!window.antidebugTool) {
-                window.antidebugTool = new AntiDebugTool(container);
-                window.antidebugTool.init();
-            }
-            if (hash === ROUTES.ANTIDEBUG || hash === ROUTES.ANTIDEBUG_DEBUGGER) {
-                window.antidebugTool.navigate('debugger');
-            } else if (hash === ROUTES.ANTIDEBUG_CONSOLE) {
-                window.antidebugTool.navigate('console');
-            }
-        } else if (hash.startsWith(ROUTES.DEVTOOLS)) {
-            const { DevTools } = await import('../pages/devtools.js');
-            if (!window.devTools) {
-                window.devTools = new DevTools(container);
-                window.devTools.init();
-            }
-            if (hash === ROUTES.DEVTOOLS || hash === ROUTES.DEVTOOLS_CURL) {
-                window.devTools.navigate('curl');
-            }
+            window.placeholderTool.navigate();
         }
     }
 }

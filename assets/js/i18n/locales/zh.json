@@ -9,12 +9,12 @@
         "virtualKeyboard": "虚拟键盘"
     },
     "tools": {
-        "environment": "环境",
-        "environmentDesc": "修改浏览器运行时环境，伪造浏览器指纹",
-        "antidebug": "反调试",
-        "antidebugDesc": "检测并阻止调试行为",
-        "devtools": "工具",
-        "devtoolsDesc": "常用开发工具集合",
+        "placeholder1": "占位工具 1",
+        "placeholder1Desc": "这是一个预留的工具位置",
+        "placeholder2": "占位工具 2",
+        "placeholder2Desc": "这是一个预留的工具位置",
+        "placeholder3": "占位工具 3",
+        "placeholder3Desc": "这是一个预留的工具位置",
         "placeholder4": "占位工具 4",
         "placeholder4Desc": "这是一个预留的工具位置",
         "placeholder5": "占位工具 5",
@@ -26,54 +26,13 @@
         "placeholder8": "占位工具 8",
         "placeholder8Desc": "这是一个预留的工具位置"
     },
-    "env": {
-        "hooks": "对象钩子",
-        "hooksDesc": "拦截并修改对象属性的读取和写入操作",
-        "functions": "函数固定",
-        "functionsDesc": "固定函数返回值或修改函数行为",
-        "fingerprint": "指纹配置",
-        "async": "异步拦截",
-        "asyncDesc": "拦截并修改异步操作的结果",
-        "fp": {
-            "loading": "正在加载指纹目录...",
-            "loadFailed": "指纹目录加载失败",
-            "retry": "重试",
-            "sectionAll": "全部",
-            "reset": "重置筛选",
-            "searchPlaceholder": "搜索 id / path / slot",
-            "permissionAll": "全部权限",
-            "permissionEditable": "可修改",
-            "permissionReadonly": "只读",
-            "typeAll": "全部类型",
-            "readonly": "只读",
-            "current": "Value",
-            "empty": "当前筛选条件下无结果",
-            "total": "总数",
-            "prev": "上一页",
-            "next": "下一页"
-        }
-    },
-    "ad": {
-        "debugger": "Debugger",
-        "debuggerDesc": "检测并阻止调试器行为",
-        "consoleTitle": "Console",
-        "controlTitle": "调试控制台",
-        "terminalWelcome": "欢迎使用 Obscura，",
-        "terminalHelp": "输入 \"help\" 查看可用命令。",
-        "statusRunning": "运行中",
-        "statusStopped": "已停止",
-        "console": {
-            "arrayHint": "输入数组长度",
-            "tableHint": "输入表格长度",
-            "arrayDisabled": "数组已关闭",
-            "tableDisabled": "表格已关闭",
-            "arrayLimited": "数组限制 {n} 条",
-            "tableLimited": "表格限制 {n} 条"
-        }
-    },
-    "devtools": {
-        "curl": "Curl 转换",
-        "curlDesc": "将 Curl 命令转换为各种编程语言的请求代码"
+    "placeholderPages": {
+        "placeholder1Title": "占位工具 1",
+        "placeholder1Desc": "这是一个预留的工具位置，可作为后续功能模板。",
+        "placeholder2Title": "占位工具 2",
+        "placeholder2Desc": "这是一个预留的工具位置，可作为后续功能模板。",
+        "placeholder3Title": "占位工具 3",
+        "placeholder3Desc": "这是一个预留的工具位置，可作为后续功能模板。"
     },
     "modal": {
         "title": "提示",
@@ -87,7 +46,7 @@
         "title": "免责声明",
         "intro": "本软件（以下简称\"本工具\"）是基于 Chromium 开源项目进行的二次开发与定制，旨在为合法的软件开发、调试、安全研究及教育目的提供技术辅助。在使用本工具前，请务必仔细阅读并充分理解本免责声明。您安装、复制、下载、访问或使用本工具的任何部分，即表示您已无条件接受并同意遵守本声明的全部条款。",
         "legalTitle": "1. 合法用途与合规性",
-        "legalContent": "本工具提供的功能（包括但不限于环境伪装、反调试、网络代理、代码分析等）仅可用于以下场景：软件开发者对自身产品的兼容性测试与调试；安全研究人员在授权范围内对系统、应用的安全性评估；学术研究与技术学习，不得用于侵犯他人合法权益；其他符合适用法律法规及道德规范的行为。您承诺使用本工具时，将严格遵守所在国家或地区的法律法规，尊重他人的知识产权、隐私权及其他合法权益。您不得利用本工具从事任何违法活动，包括但不限于：未经授权绕过网站的反爬虫机制，获取非公开数据；伪造身份或设备指纹进行欺诈、虚假点击、恶意刷单等；干扰、破坏网络服务正常运行，或对他人计算机系统发起攻击；其他可能触犯法律或违反服务协议的行为。",
+        "legalContent": "本工具当前作为前端模板工程提供，用于合法的软件开发、界面搭建、调试与学习。您承诺使用本工具时，将严格遵守所在国家或地区的法律法规，尊重他人的知识产权、隐私权及其他合法权益。您不得利用本工具从事任何违法、侵权、干扰网络服务或破坏他人计算机系统的行为。",
         "noWarrantyTitle": "2. 无担保声明",
         "noWarrantyContent": "本工具按\"现状\"和\"可提供性\"原则提供，不附带任何明示或暗示的担保。开发者及贡献者不保证：本工具的功能完全符合您的预期或满足特定需求；本工具在运行中不会出现中断、错误或安全漏洞；使用本工具获得的结果绝对准确、可靠或可用。在法律允许的最大范围内，开发者及贡献者特此声明不承担任何默示担保，包括但不限于适销性、特定用途适用性及不侵权的担保责任。",
         "liabilityTitle": "3. 责任限制",

@@ -2,30 +2,32 @@
     width: 100%;
     max-width: 100%;
     padding: 0;
-    flex: 1; /* 填满 main 剩余空间 */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 #tool-content {
     width: 100%;
-    flex: 1; /* 填满 tool-container */
+    flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 
-.dt-tool {
+.placeholder-tool {
     display: flex;
     gap: 24px;
-    flex: 1; /* 填满 tool-content */
+    flex: 1;
     padding: 24px 24px 0 24px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     margin: 0;
+    min-height: 0;
 }
 
-.dt-sidebar {
+.placeholder-sidebar {
     width: 200px;
     flex-shrink: 0;
     transition: all 0.3s ease;
@@ -33,7 +35,7 @@
     flex-direction: column;
 }
 
-.dt-sidebar.collapsed {
+.placeholder-sidebar.collapsed {
     width: 0;
     padding: 0;
     margin: 0;
@@ -41,7 +43,7 @@
     opacity: 0;
 }
 
-.dt-nav {
+.placeholder-nav {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -54,7 +56,7 @@
     flex: 1;
 }
 
-.dt-nav-item {
+.placeholder-nav-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,30 +74,30 @@
     text-align: center;
 }
 
-.dt-nav-item:hover {
+.placeholder-nav-item:hover {
     background: var(--bg-alt);
     color: var(--text);
 }
 
-.dt-nav-item.active {
+.placeholder-nav-item.active {
     background: var(--obscura-accent);
     color: #fff;
 }
 
-.dt-main {
+.placeholder-main {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
     min-width: 0;
+    min-height: 0;
 }
 
-.dt-header {
+.placeholder-header {
     display: flex;
     align-items: center;
 }
 
-/* 默认浅色主题变量 */
 .keycap {
     --kc-bg: linear-gradient(180deg, #ffffff, #f0f0f0);
     --kc-shadow-1: inset -8px 0 8px rgba(0, 0, 0, 0.05);
@@ -106,7 +108,7 @@
     --kc-top-highlight: rgba(255, 255, 255, 1);
     --kc-top-shadow: rgba(0, 0, 0, 0.05);
     --kc-text: #333;
-    
+
     position: relative;
     display: inline-flex;
     justify-content: center;
@@ -121,15 +123,12 @@
         0 0 0 2px var(--kc-border),
         10px 20px 25px var(--kc-drop-shadow);
     overflow: hidden;
-    transition:
-        transform 0.1s ease-in-out,
-        box-shadow 0.1s ease-in;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 
-/* 深色主题变量覆盖 */
 html.dark .keycap {
     --kc-bg: linear-gradient(180deg, #282828, #202020);
     --kc-shadow-1: inset -8px 0 8px rgba(0, 0, 0, 0.15);
@@ -164,20 +163,20 @@ html.dark .keycap {
     box-shadow:
         -10px -10px 10px var(--kc-top-highlight),
         10px 5px 10px var(--kc-top-shadow);
-    border-left: 1px solid rgba(0, 0, 0, 0.05); /* slightly adjusted for light mode compat */
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.1s ease-in-out;
 }
 
-/* Adjust borders for dark mode specifically if needed, but generic rgba usually works okay */
 html.dark .keycap::before {
     border-left: 1px solid #0004;
     border-bottom: 1px solid #0004;
     border-top: 1px solid #0009;
 }
 
-.keycap:active, .keycap.active {
+.keycap:active,
+.keycap.active {
     transform: translateY(2px);
     box-shadow:
         inset -4px 0 4px rgba(0, 0, 0, 0.1),
@@ -186,7 +185,8 @@ html.dark .keycap::before {
         5px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
-.keycap:active::before, .keycap.active::before {
+.keycap:active::before,
+.keycap.active::before {
     top: 5px;
     left: 5px;
     bottom: 11px;
@@ -196,10 +196,11 @@ html.dark .keycap::before {
         5px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.keycap:active .letter, .keycap.active .letter {
+.keycap:active .letter,
+.keycap.active .letter {
     transform: translate(-3px, -4px);
     color: var(--obscura-accent);
-    text-shadow: 
+    text-shadow:
         0 0 10px var(--obscura-accent),
         0 0 20px var(--obscura-accent);
 }
@@ -251,11 +252,13 @@ html.dark .keycap::before {
     transform: rotate(90deg);
 }
 
-.dt-content {
+.placeholder-content {
     flex: 1;
+    min-height: 0;
+    overflow: visible;
 }
 
-.dt-card {
+.placeholder-card {
     background: var(--card-bg);
     box-shadow: 15px 15px 30px var(--card-shadow-dark),
                 -15px -15px 30px var(--card-shadow-light);
@@ -266,81 +269,80 @@ html.dark .keycap::before {
     min-height: 400px;
 }
 
-.dt-card-title {
+.placeholder-card-title {
     font-size: 24px;
     font-weight: 700;
     color: var(--text);
     margin-bottom: 12px;
 }
 
-.dt-card-desc {
+.placeholder-card-desc {
     font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.6;
 }
 
 @media (max-width: 768px) {
-    .dt-tool {
+    .placeholder-tool {
         display: grid;
         grid-template-columns: auto 1fr;
         grid-template-rows: auto 1fr;
-        grid-template-areas: 
+        grid-template-areas:
             "back nav"
             "content content";
-        gap: 24px; /* 保持与大分辨率一致的间距 */
+        gap: 24px;
         flex-direction: unset;
-        padding: 24px 24px 0 24px; /* 保持与大分辨率一致的内边距 */
+        padding: 24px 24px 0 24px;
     }
 
-    .dt-card {
-        padding: 32px; /* 保持与大分辨率一致 */
+    .placeholder-card {
+        padding: 32px;
     }
 
-    .dt-sidebar {
+    .placeholder-sidebar {
         grid-area: nav;
         width: 100%;
-        min-width: 0; /* 关键：防止 grid item 溢出 */
+        min-width: 0;
     }
 
-    .dt-main {
-        display: contents; /* 将子元素提升到 grid 容器 */
+    .placeholder-main {
+        display: contents;
     }
 
-    .dt-header {
+    .placeholder-header {
         grid-area: back;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .dt-content {
+    .placeholder-content {
         grid-area: content;
     }
 
-    .dt-nav {
+    .placeholder-nav {
         flex-direction: row;
         overflow-x: auto;
         padding: 8px;
-        -webkit-overflow-scrolling: touch; /* 启用 iOS 惯性滚动 */
-        scrollbar-width: none; /* Firefox 隐藏滚动条 */
-        -ms-overflow-style: none; /* IE/Edge 隐藏滚动条 */
-        height: 100%; /* 填满高度 */
-        align-items: center; /* 垂直居中 */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        height: 100%;
+        align-items: center;
     }
 
-    /* WebKit (Chrome/Safari) 隐藏滚动条 */
-    .dt-nav::-webkit-scrollbar {
+    .placeholder-nav::-webkit-scrollbar {
         display: none;
     }
 
-    .dt-nav-item {
+    .placeholder-nav-item {
         padding: 12px 16px;
         font-size: 14px;
         white-space: nowrap;
-        flex-shrink: 0; /* 防止子项被挤压，确保可以横向滚动 */
-        flex-grow: 1; /* 让子项在空间足够时自动填满剩余空间 */
-        width: auto; /* 取消桌面端的 100% 宽度，让其自适应内容 */
-        text-align: center; /* 文字居中 */
-        justify-content: center; /* 内容居中 */
+        flex-shrink: 0;
+        flex-grow: 1;
+        width: auto;
+        text-align: center;
+        justify-content: center;
     }
 }

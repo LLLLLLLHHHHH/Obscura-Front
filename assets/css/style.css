@@ -7,9 +7,6 @@
 @import 'components/virtual-keyboard-mac.css';
 @import 'components/virtual-keyboard-win.css';
 @import 'components/standee.css';
-@import 'components/number-input.css';
 
 @import 'pages/index.css';
-@import 'pages/environment.css';
-@import 'pages/antidebug.css';
-@import 'pages/devtools.css';
+@import 'pages/placeholders.css';

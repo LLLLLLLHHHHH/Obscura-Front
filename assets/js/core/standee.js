@@ -3,7 +3,7 @@ export class Standee {
     this.container = container;
     this.options = {
       title: options.title || 'Info',
-      sub: options.sub || '– Console Info –',
+      sub: options.sub || 'Info',
       origX: options.origX ?? -8,
       origY: options.origY ?? 30,
       frontAngle: options.frontAngle ?? 32,
@@ -25,7 +25,6 @@ export class Standee {
     this.currentRotX = this.options.origX;
     this.currentRotY = this.options.origY;
     this.pointerId = null;
-    this.mojoslot = this.container.dataset.mojoslot || null;
     this.boundOnPointerDown = this.onPointerDown.bind(this);
     this.boundOnPointerMove = this.onPointerMove.bind(this);
     this.boundOnPointerUp = this.onPointerUp.bind(this);
