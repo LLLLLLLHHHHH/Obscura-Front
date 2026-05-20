@@ -1,65 +1,70 @@
-# Obscura
+# Obscura Front
 
-一个现代化的、极简风格的开发者工具集合。
+一个轻量的前端模板工程，保留主题切换、语言切换、视觉特效、虚拟键盘和占位工具页，方便继续扩展新的前端功能。
 
-## ✨ 特性
+## 功能
 
-- 🎨 **多主题支持**：支持亮色（白/绿，主题色 `#00d4aa`）和暗黑（黑/红，主题色 `#e11d48`）主题，自动适应系统偏好。
-- 🌍 **国际化**：支持简体中文和英文切换。
-- ⚡ **高性能**：基于原生 JavaScript 开发，无庞大依赖，加载速度快。
-- 📱 **响应式设计**：完美适配桌面端和移动端设备。
-- 🖌️ **视觉特效**：
-    - 亮色主题：动态生成的卡通草地效果。
-    - 暗色主题：流星雨背景动画。
-    - 3D 卡片悬停与光照效果。
+- 亮色 / 暗色主题切换
+- 简体中文 / 英文国际化
+- 响应式布局
+- 首页工具卡片网格
+- `#placeholder1`、`#placeholder2`、`#placeholder3` 三个占位工具页
+- Header 视觉特效与虚拟键盘组件
 
-## 🛠️ 技术栈
+## 技术栈
 
-- **HTML5**: 语义化结构。
-- **CSS3**: 使用 CSS 变量管理主题，Neumorphism 风格设计。
-- **JavaScript (ES6+)**: 模块化开发，包含核心逻辑、动画系统和国际化模块。
+- HTML5
+- CSS3
+- JavaScript ES Modules
 
-## 🚀 快速开始
+## 快速开始
 
-1.  克隆仓库：
+1. 克隆仓库：
+
     ```bash
-    git clone https://github.com/your-username/Obscura-Front.git
+    git clone https://github.com/LLLLLLLHHHHH/Obscura-Front.git
     ```
-2.  进入目录：
+
+2. 进入目录：
+
     ```bash
     cd Obscura-Front
     ```
-3.  启动本地服务器（推荐使用 Live Server 或类似工具）：
-    - 如果使用 Python: `python -m http.server`
-    - 如果使用 Node.js: `npx http-server`
-4.  在浏览器中访问：`http://localhost:8000`
 
-## 📂 项目结构
+3. 启动本地静态服务，例如：
 
-```
+    ```bash
+    python -m http.server
+    ```
+
+4. 在浏览器访问：
+
+    ```text
+    http://localhost:8000
+    ```
+
+也可以使用 VS Code Live Server 直接打开 `index.html`。
+
+## 项目结构
+
+```text
 Obscura-Front/
 ├── assets/
 │   ├── css/
 │   │   ├── common/       # 基础样式与变量
-│   │   ├── components/   # 组件样式（按钮、卡片、模态框）
+│   │   ├── components/   # 通用组件样式
 │   │   ├── layout/       # 布局样式
-│   │   ├── pages/        # 页面特定样式
+│   │   ├── pages/        # 页面样式
 │   │   └── style.css     # 样式入口
-│   ├── js/
-│   │   ├── core/         # 核心逻辑（主题、路由、特效、组件）
-│   │   ├── i18n/         # 国际化模块与语言包
-│   │   └── pages/        # 页面入口脚本与模板
-├── earth.html            # Earth 页面
+│   └── js/
+│       ├── core/         # 主题、路由、特效与组件逻辑
+│       ├── i18n/         # 国际化模块与语言包
+│       └── pages/        # 页面入口脚本与模板
 ├── index.html            # 主页
-├── sun.html              # Sun 页面
-├── .gitignore            # Git 忽略配置
-└── README.md             # 项目说明
+├── .gitignore
+└── README.md
 ```
 
-## 🤝 贡献
-
-欢迎提交 Issue 或 Pull Request 来改进这个项目！
-
-## 📄 许可证
+## 许可
 
 MIT License
