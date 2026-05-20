@@ -2,7 +2,7 @@ import { initTheme } from '../core/theme.js';
 import { initEffects } from '../core/effects.js';
 import { initSmoothScroll } from '../core/utils.js';
 import { initI18nModule } from '../i18n/index.js';
-import { initDevModal } from '../core/modal.js';
+import { initPlaceholderModal } from '../core/modal.js';
 import { initDisclaimerModal } from '../core/disclaimer.js';
 import { GrassGenerator } from '../core/grass.js';
 import { getMeteorShower } from '../core/meteor.js';
@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     initEffects();
     initSmoothScroll();
     await initI18nModule();
-    initDevModal();
+    initPlaceholderModal();
     initDisclaimerModal();
-    
+
     initVirtualKeyboard();
     initStandees();
-    
+
     initToolCards();
 
     // 初始化草地系统（仅在 header 内，不改变原有布局）
@@ -91,7 +91,7 @@ function initStandees() {
         const instance = initStandee(container, options);
         standeeInstances.push(instance);
     });
-    window.ObscuraStandeenstances = standeeInstances;
+    window.ObscuraStandeeInstances = standeeInstances;
 }
 
 function initVirtualKeyboard() {
@@ -105,51 +105,51 @@ function initVirtualKeyboard() {
 
     function insertTextToActiveElement(text) {
         const activeElement = document.activeElement;
-        
+
         if (!activeElement) return false;
-        
-        const isEditable = 
+
+        const isEditable =
             activeElement.tagName === 'INPUT' ||
             activeElement.tagName === 'TEXTAREA' ||
             activeElement.isContentEditable;
-        
+
         if (!isEditable) return false;
-        
+
         if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
             const start = activeElement.selectionStart;
             const end = activeElement.selectionEnd;
             const value = activeElement.value;
-            
+
             activeElement.value = value.substring(0, start) + text + value.substring(end);
-            
+
             const newPos = start + text.length;
             activeElement.setSelectionRange(newPos, newPos);
         } else if (activeElement.isContentEditable) {
             document.execCommand('insertText', false, text);
         }
-        
+
         activeElement.dispatchEvent(new Event('input', { bubbles: true }));
         activeElement.dispatchEvent(new Event('change', { bubbles: true }));
-        
+
         return true;
     }
 
     function handleBackspace() {
         const activeElement = document.activeElement;
-        
+
         if (!activeElement) return false;
-        
-        const isEditable = 
+
+        const isEditable =
             activeElement.tagName === 'INPUT' ||
             activeElement.tagName === 'TEXTAREA' ||
             activeElement.isContentEditable;
-        
+
         if (!isEditable) return false;
-        
+
         if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA') {
             const start = activeElement.selectionStart;
             const end = activeElement.selectionEnd;
-            
+
             if (start === end && start > 0) {
                 const value = activeElement.value;
                 activeElement.value = value.substring(0, start - 1) + value.substring(end);
@@ -169,25 +169,25 @@ function initVirtualKeyboard() {
                 }
             }
         }
-        
+
         activeElement.dispatchEvent(new Event('input', { bubbles: true }));
         activeElement.dispatchEvent(new Event('change', { bubbles: true }));
-        
+
         return true;
     }
 
     function handleSpecialKey(code, key) {
         const activeElement = document.activeElement;
-        
+
         if (!activeElement) return false;
-        
-        const isEditable = 
+
+        const isEditable =
             activeElement.tagName === 'INPUT' ||
             activeElement.tagName === 'TEXTAREA' ||
             activeElement.isContentEditable;
-        
+
         if (!isEditable) return false;
-        
+
         switch (code) {
             case 'Enter':
                 if (activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable) {
@@ -219,30 +219,27 @@ function initVirtualKeyboard() {
         defaultPosition: { x: -20, y: -20 },
         onInput: (data) => {
             const { code, key, state } = data;
-            
+
             if (code === 'Backspace') {
                 handleBackspace();
                 return;
             }
-            
+
             if (handleSpecialKey(code, key)) {
                 return;
             }
-            
+
             let textToInsert = key;
-            
+
             if (state.shift || state.capsLock) {
                 if (key.length === 1 && /[a-z]/.test(key)) {
                     textToInsert = key.toUpperCase();
                 }
             }
-            
+
             if (textToInsert && textToInsert.length > 0) {
                 insertTextToActiveElement(textToInsert);
             }
-        },
-        onKeyPress: (data) => {
-            console.log('Virtual keyboard key press:', data);
         }
     });
 

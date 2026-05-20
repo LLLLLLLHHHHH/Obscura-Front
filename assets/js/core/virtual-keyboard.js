@@ -252,14 +252,14 @@ class VirtualKeyboard {
         this.layout.rows.forEach(row => {
             const rowEl = document.createElement('div');
             rowEl.className = 'vk-row';
-            
+
             row.forEach(keyData => {
                 const keyEl = document.createElement('div');
                 keyEl.className = `vk-key ${keyData.class || ''} ${keyData.width || 'vk-u-1'}`;
                 keyEl.dataset.code = keyData.code;
                 keyEl.dataset.key = keyData.key;
                 keyEl.textContent = keyData.key;
-                
+
                 if (keyData.shift) {
                     keyEl.dataset.shiftKey = keyData.shift;
                 }
@@ -287,7 +287,7 @@ class VirtualKeyboard {
             });
             key.addEventListener('mouseup', (e) => this.handleKeyUp(e));
             key.addEventListener('mouseleave', (e) => this.handleKeyLeave(e));
-            
+
             key.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 this.handleKeyDown(e);
@@ -302,9 +302,9 @@ class VirtualKeyboard {
         document.addEventListener('keyup', (e) => this.onPhysicalKeyUp(e));
 
         const observer = new MutationObserver(() => this.updateTheme());
-        observer.observe(document.documentElement, { 
-            attributes: true, 
-            attributeFilter: ['class'] 
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class']
         });
 
         window.addEventListener('resize', () => {
@@ -331,7 +331,7 @@ class VirtualKeyboard {
 
     drag(e) {
         if (!this.isDragging) return;
-        
+
         let x = e.clientX - this.dragOffset.x;
         let y = e.clientY - this.dragOffset.y;
 
@@ -349,7 +349,7 @@ class VirtualKeyboard {
     endDrag() {
         if (!this.isDragging) return;
         this.isDragging = false;
-        
+
         const rect = this.keyboardEl.getBoundingClientRect();
         this.position = {
             x: rect.left,
@@ -361,7 +361,7 @@ class VirtualKeyboard {
 
     getDisplayKey(keyData) {
         if (!keyData.key) return '';
-        
+
         if (this.state.capsLock || this.state.shift) {
             if (keyData.key.length === 1 && /[a-z]/.test(keyData.key)) {
                 return keyData.key.toUpperCase();
@@ -370,7 +370,7 @@ class VirtualKeyboard {
                 return keyData.shiftKey;
             }
         }
-        
+
         return keyData.key;
     }
 
@@ -378,7 +378,7 @@ class VirtualKeyboard {
         this.keyboardEl.querySelectorAll('.vk-key').forEach(keyEl => {
             const code = keyEl.dataset.code;
             const keyData = this.layout.rows.flat().find(k => k.code === code);
-            
+
             if (keyData) {
                 keyEl.textContent = this.getDisplayKey(keyData);
             }
@@ -387,11 +387,11 @@ class VirtualKeyboard {
 
     onPhysicalKeyDown(e) {
         const code = e.code;
-        
+
         if (code === 'CapsLock') {
             this.state.capsLock = !this.state.capsLock;
         }
-        
+
         if (e.shiftKey) {
             this.state.shift = true;
         }
@@ -406,7 +406,7 @@ class VirtualKeyboard {
         }
 
         this.pressedKeys.add(code);
-        
+
         const keyEl = this.keyboardEl.querySelector(`[data-code="${code}"]`);
         if (keyEl) {
             keyEl.classList.add('pressed');
@@ -464,10 +464,10 @@ class VirtualKeyboard {
         if (!keyEl) return;
 
         keyEl.classList.add('pressed');
-        
+
         const code = keyEl.dataset.code;
         const key = keyEl.dataset.key;
-        
+
         this.pressedKeys.add(code);
 
         const modifierKeys = ['ShiftLeft', 'ShiftRight', 'CapsLock', 'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight', 'Fn'];
@@ -496,7 +496,7 @@ class VirtualKeyboard {
         }
 
         const displayKey = keyEl.textContent;
-        
+
         if (this.options.onInput) {
             this.options.onInput({
                 code: code,
@@ -511,14 +511,14 @@ class VirtualKeyboard {
         if (!keyEl) return;
 
         keyEl.classList.remove('pressed');
-        
+
         const code = keyEl.dataset.code;
         this.pressedKeys.delete(code);
-        
+
         if (code === 'ShiftLeft' || code === 'ShiftRight') {
             this.state.shift = false;
         }
-        
+
         if (code !== 'ShiftLeft' && code !== 'ShiftRight') {
             this.updateKeyDisplay();
         }
@@ -542,10 +542,10 @@ class VirtualKeyboard {
         const rect = this.keyboardEl.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-        
+
         this.position.x = viewportWidth - rect.width - 20;
         this.position.y = viewportHeight - rect.height - 20;
-        
+
         this.keyboardEl.style.left = this.position.x + 'px';
         this.keyboardEl.style.top = this.position.y + 'px';
     }

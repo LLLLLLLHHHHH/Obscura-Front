@@ -31,8 +31,6 @@ const PLACEHOLDER_CONFIGS = {
 
 class Router {
     constructor() {
-        this.routes = new Map();
-        this.currentRoute = null;
         this.init();
     }
 
@@ -41,17 +39,13 @@ class Router {
         window.addEventListener('load', () => this.handleRoute());
     }
 
-    register(path, handler) {
-        this.routes.set(path, handler);
-    }
-
     navigate(path) {
         window.location.hash = path;
     }
 
     handleRoute() {
         const hash = window.location.hash.slice(1) || ROUTES.HOME;
-        
+
         const main = document.querySelector('main');
         if (!main) return;
 
@@ -70,7 +64,7 @@ class Router {
             if (toolsSection) {
                 toolsSection.classList.add('is-hidden');
             }
-            this.loadTool(hash);
+            await this.loadTool(hash);
         }
     }
 

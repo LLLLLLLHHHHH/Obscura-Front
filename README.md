@@ -61,6 +61,8 @@ Obscura-Front/
 │       ├── i18n/         # 国际化模块与语言包
 │       └── pages/        # 页面入口脚本与模板
 ├── index.html            # 主页
+├── .editorconfig         # 编辑器格式约定
+├── .gitattributes        # Git 换行约定
 ├── .gitignore
 └── README.md
 ```

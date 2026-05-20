@@ -35,7 +35,7 @@
 
 .virtual-keyboard.win .vk-key.pressed {
   color: var(--obscura-accent);
-  text-shadow: 
+  text-shadow:
       0 0 10px var(--obscura-accent),
       0 0 20px var(--obscura-accent);
 }
@@ -93,7 +93,7 @@
 
 .dark.virtual-keyboard.win .vk-key.pressed {
   color: var(--obscura-accent);
-  text-shadow: 
+  text-shadow:
       0 0 10px var(--obscura-accent),
       0 0 20px var(--obscura-accent);
 }

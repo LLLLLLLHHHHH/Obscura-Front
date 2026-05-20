@@ -12,7 +12,7 @@ export class StarInteraction {
      */
     constructor(headerEl, config = {}) {
         this.headerEl = headerEl;
-        
+
         // 默认配置
         this.config = {
             // 防抖间隔 (毫秒)
@@ -97,18 +97,18 @@ export class StarInteraction {
     _createStar(x, y) {
         const star = document.createElement('div');
         star.classList.add('star-effect');
-        
+
         // 随机参数
         const size = this._rand(this.config.sizeRange[0], this.config.sizeRange[1]);
         const rotation = this._rand(0, 360);
         const duration = this._rand(this.config.durationRange[0], this.config.durationRange[1]);
         const type = this.config.starTypes[Math.floor(this._rand(0, this.config.starTypes.length))];
-        
+
         const hue = this._rand(this.config.colors.hueRange[0], this.config.colors.hueRange[1]);
         const sat = this._rand(this.config.colors.satRange[0], this.config.colors.satRange[1]);
         const light = this._rand(this.config.colors.lightRange[0], this.config.colors.lightRange[1]);
         const color = `hsl(${hue}, ${sat}%, ${light}%)`;
-        
+
         const glowRadius = this._rand(this.config.glowRadiusRange[0], this.config.glowRadiusRange[1]);
 
         // 设置样式
@@ -116,7 +116,7 @@ export class StarInteraction {
         star.style.top = `${y}px`;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
-        
+
         // 使用 CSS 变量控制动画
         star.style.setProperty('--star-rotation', `${rotation}deg`);
         star.style.setProperty('--star-scale', '1');
@@ -132,7 +132,7 @@ export class StarInteraction {
 
         const path = document.createElementNS(svgNS, "path");
         path.setAttribute("d", this._getStarPath(type));
-        
+
         if (type === 'outline') {
             // 空心星样式：无填充，有描边
             path.setAttribute("fill", "none");

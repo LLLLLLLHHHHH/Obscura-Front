@@ -15,7 +15,7 @@
     /* ---- 视差动画变量 (由 JS 动态更新) ---- */
     --hero-mouse-x: 0;
     --hero-mouse-y: 0;
-    
+
     /* Spotlight color variable */
     --spotlight-color: 0, 0, 0;
 
@@ -38,7 +38,7 @@
 
     /* ---- 暗黑主题重写强调色 (黑红配色) ---- */
     /* 这种红色接近绯红/深红，避免刺眼的大红 (#FF0000) */
-    --obscura-accent: #e11d48; 
+    --obscura-accent: #e11d48;
 
     /* ---- Neumorphism 卡片变量 (深色主题) ---- */
     --card-bg: #121212;

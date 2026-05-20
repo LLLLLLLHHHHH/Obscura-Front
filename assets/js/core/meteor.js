@@ -119,7 +119,7 @@ export class MeteorShower {
     // 从 header 左侧出发，向右侧运动（水平方向）
     _createMeteor() {
         const rect = this.headerEl.getBoundingClientRect();
-        
+
         // 起始位置：从 header 左侧外部进入，y 在中间区域随机
         const startX = -this._rand(50, 150); // 从左边 50-150px 外开始
         const startY = this._rand(rect.height * 0.1, rect.height * 0.9); // y 在 header 垂直中间区域
@@ -153,7 +153,7 @@ export class MeteorShower {
             height: ${size}px;
             background: ${color};
             border-radius: 50%;
-            box-shadow: 
+            box-shadow:
                 0 0 ${size * 2}px ${color},
                 0 0 ${size * 4}px ${color},
                 0 0 ${size * 6}px rgba(255, 255, 255, 0.8);
@@ -223,7 +223,7 @@ export class MeteorShower {
 
         // 基于进度计算当前位置（从左到右的水平运动轨迹）
         const rect = this.headerEl.getBoundingClientRect();
-        
+
         // 起点：header 左侧外部
         const startX = -150;
         const startY = rect.height * 0.5;
@@ -304,21 +304,21 @@ export class MeteorShower {
     // 触发流星雨：根据 20% 概率生成一次流星
     trigger() {
         const now = Date.now();
-        
+
         // 如果已经有太多流星在运行，跳过本次触发（防止积压）
         if (this.meteors.length >= this.config.maxConcurrent) {
             return false;
         }
-        
+
         // 防止短时间内重复触发（1秒内最多触发一次）
         if (now - this._lastGenTime < 1000) {
             return false;
         }
-        
+
         // 20% 概率触发
         if (Math.random() < this.config.probability) {
             this._lastGenTime = now;
-            
+
             // 生成 1-5 颗流星，但不超过最大并发限制
             const remaining = this.config.maxConcurrent - this.meteors.length;
             const count = Math.min(this._randInt(1, this.config.maxCount), remaining);
@@ -327,7 +327,7 @@ export class MeteorShower {
                 setTimeout(() => {
                     // 再次检查并发限制
                     if (this.meteors.length >= this.config.maxConcurrent) return;
-                    
+
                     this.meteors.push(this._createMeteor());
                     // 如果是第一个，启动动画循环
                     if (!this._isRunning && this.meteors.length === 1) {

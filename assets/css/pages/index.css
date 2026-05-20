@@ -62,7 +62,7 @@
     .hero h1 {
         font-size: 28px;
     }
-    
+
     .tools-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px; /* 进一步减小间距 */

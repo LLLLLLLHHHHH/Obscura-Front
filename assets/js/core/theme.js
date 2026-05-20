@@ -28,7 +28,7 @@ export function initTheme() {
         const isDark = html.classList.contains('dark');
         updateIcons(isDark);
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        
+
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 html.classList.remove('theme-switching');
